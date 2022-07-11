@@ -1,23 +1,27 @@
+# Using lambda keyword and refresh function to create a dynamic menu.
 import tkinter as tk
 
-root = tk.Tk()
-choices = ('network one', 'network two', 'network three')
-var = tk.StringVar(root)
+def show(x):
+    """ Show menu items """
+    var.set(x)
 
-def refresh():
-    # Reset var and delete all old options
+def refresh(l):
+    """ Refresh menu contents """
     var.set('')
-    network_select['menu'].delete(0, 'end')
+    menu.delete(0, 'end')
+    for i in l:
+        menu.add_command(label=i, command=lambda x=i: show(x))
 
-    # Insert list of new options (tk._setit hooks them up to var)
-    new_choices = ('one', 'two', 'three')
-    for choice in new_choices:
-        network_select['menu'].add_command(label=choice, command=tk._setit(var, choice))
+root = tk.Tk()
+menubar = tk.Menu(root)
+root.configure(menu=menubar)
+menu = tk.Menu(menubar, tearoff=False)
+menubar.add_cascade(label='Choice', menu=menu)
 
-network_select = tk.OptionMenu(root, var, *choices)
-network_select.grid()
-
-# I made this quick refresh button to demonstrate
-tk.Button(root, text='Refresh', command=refresh).grid()
-
+var = tk.StringVar()
+l = ['one', 'two', 'three']
+refresh(l)
+l = ['four', 'five', 'six', 'seven']
+tk.Button(root, text='Refresh', command=lambda: refresh(l)).pack()
+tk.Label(root, textvariable=var).pack()
 root.mainloop()
