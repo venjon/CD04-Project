@@ -1,3 +1,4 @@
+from time import sleep
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
@@ -10,7 +11,19 @@ rcanvas.pack(side="right")
 
 #Right-Side Menus
 #ROCKS
-
+def createRockRight():
+    #MAT
+    tk.Label(rockoptionscanvas[-1],text="Name of Material - MAT").grid(column=0,row=0)
+    mat = tk.Label(rockoptionscanvas[-1],text=rockoptions[-1], bg="white")
+    mat.grid(column=1,row=0)
+    #NAD
+    tk.Label(rockoptionscanvas[-1],text="- NAD").grid(column=0,row=1)
+    nad = tk.StringVar()
+    tk.Entry(rockoptionscanvas[-1],textvariable=nad).grid(column=1,row=1)
+    #DROK
+    tk.Label(rockoptionscanvas[-1],text="Rock Grain Density (kg/m^3)- DROK").grid(column=0,row=2)
+    drok = tk.StringVar()
+    tk.Entry(rockoptionscanvas[-1],textvariable=drok).grid(column=1,row=2)
 
 #Left-Side Menus
 #TITLE
@@ -26,7 +39,9 @@ def RocksOptionMenu_SelectionEvent(event):
     if RockChoice == "Add Material":
         addMaterial()
     else:
-        print("bad")
+        for x in range(1, len(rockoptionscanvas)):
+            rockoptionscanvas[x].pack_forget()
+        rockoptionscanvas[rockoptions.index(RockChoice)].pack()
     pass
 
 def addMaterial():
@@ -35,19 +50,23 @@ def addMaterial():
     tk.Label(newMat,text="""Enter a name for your new sample
     (preferably 5 characters)
     DO NOT INCLUDE SPACES""").pack()
+    global newMatName
     newMatName = tk.StringVar()
     tk.Entry(newMat, width=30, textvariable=newMatName).pack()
     def var3():
-        global options
-        options.append(newMatName.get())
+        rockoptions.append(newMatName.get())
         newMat.destroy()
-        rockList = tk.OptionMenu(lcanvas, var1, *(options), command = RocksOptionMenu_SelectionEvent).place(x=10,y=50)
+        rockList = tk.OptionMenu(lcanvas, var1, *(rockoptions), command = RocksOptionMenu_SelectionEvent).place(x=10,y=50)
+        newrockscanvas = tk.Canvas(rcanvas, width=400, height=800, bg="#c1e2fe")
+        rockoptionscanvas.append(newrockscanvas)
+        createRockRight()
     tk.Button(newMat, text="Enter", command=lambda:var3()).pack()
 
 var1 = tk.StringVar()
 var1.set("Materials")
-options = ["Add Material"]
-rockList = tk.OptionMenu(lcanvas, var1, *(options), command = RocksOptionMenu_SelectionEvent)
+rockoptions = ["Add Material"]
+rockoptionscanvas = ["placeholder"]
+rockList = tk.OptionMenu(lcanvas, var1, *(rockoptions), command = RocksOptionMenu_SelectionEvent)
 rockList.place(x=10,y=50)
 
 #MULTI
