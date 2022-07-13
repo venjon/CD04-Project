@@ -187,7 +187,7 @@ titleLabel = tk.Label(lcanvas, text="Document Title (max 80 characters):").place
 var0 = tk.StringVar()
 titleEntry = tk.Entry(lcanvas, textvariable=var0)
 titleEntry.place(x=207,y=10)
-TITLE = titleEntry.get()
+TITLE = var0.get()
 
 #ROCKS
 def RocksOptionMenu_SelectionEvent(event):
