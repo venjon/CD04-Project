@@ -72,34 +72,39 @@ def paramclick():
     DELTENORNDLT = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=DELTENORNDLT).grid(column=1,row=11)
     #DELTMX
-    tk.Label(paramCanvas,text=" - DELTMX",bg="#ffffc5").grid(column=0,row=12)
+    tk.Label(paramCanvas,text="Upper Limit of Time Step (seconds) - DELTMX",bg="#ffffc5").grid(column=0,row=12)
     global DELTMX
     DELTMX = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=DELTMX).grid(column=1,row=12)
     #ELST
-    tk.Label(paramCanvas,text=" - ELST",bg="#ffffc5").grid(column=0,row=13)
+    tk.Label(paramCanvas,text="Element to Get Printout of After Time Step - ELST",bg="#ffffc5").grid(column=0,row=13)
     global ELST
     ELST = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=ELST).grid(column=1,row=13)
     #GF
-    tk.Label(paramCanvas,text=" - GF",bg="#ffffc5").grid(column=0,row=14)
+    tk.Label(paramCanvas,text="Magnitude of Gravitational Acceleration (m/sec^2) - GF",bg="#ffffc5").grid(column=0,row=14)
     global GF
     GF = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=GF).grid(column=1,row=14)
     #REDLT
-    tk.Label(paramCanvas,text=" - REDLT",bg="#ffffc5").grid(column=0,row=15)
+    tk.Label(paramCanvas,text="Time Step Reduction Factor at error - REDLT",bg="#ffffc5").grid(column=0,row=15)
     global REDLT
     REDLT = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=REDLT).grid(column=1,row=15)
     #SCALE
-    tk.Label(paramCanvas,text=" - SCALE",bg="#ffffc5").grid(column=0,row=16)
+    tk.Label(paramCanvas,text="Size Factor for Mesh - SCALE",bg="#ffffc5").grid(column=0,row=16)
     global SCALE
     SCALE = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=SCALE).grid(column=1,row=16)
+    #DLTI
+    tk.Label(paramCanvas,text="Duration of Step I (separate by commas) - DLT(I)",bg="#ffffc5").grid(column=0,row=17)
+    global DLTI
+    DLTI = tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=DLTI).grid(column=1,row=17)
     #SAVE
     def paramSave():
         param = []
-        param = [NOITE.get(),KDATA.get(),MCYC.get(),MSEC.get(),MCYPR.get(),MOPII124.get(),TEXP.get(),BE.get(),TSTART.get(),TIMAX.get(),DELTENORNDLT.get(),DELTMX.get(),ELST.get(),GF.get(),REDLT.get(),SCALE.get()]
+        param = [NOITE.get(),KDATA.get(),MCYC.get(),MSEC.get(),MCYPR.get(),MOPII124.get(),TEXP.get(),BE.get(),TSTART.get(),TIMAX.get(),DELTENORNDLT.get(),DELTMX.get(),ELST.get(),GF.get(),REDLT.get(),SCALE.get(),DLTI.get()]
         print(param)
     global saveparam
     saveparam = tk.Button(paramCanvas,text="Save BEFORE Switching Page", command=paramSave, bg="#00ff00")

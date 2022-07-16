@@ -13,42 +13,41 @@ def indomclick():
     global indomCanvas
     #for x in range():
         #rightPanels[x].pack_forget()
-    indomCanvas = tk.Canvas(rcanvas,width=400,height=800,bg="#b1fbbd")
+    indomCanvas = tk.Canvas(rcanvas,width=400,height=800,bg="#ffdfa5")
     #rightPanels.append(indomCanvas)
     indomCanvas.pack()
-    #NK
-    tk.Label(indomCanvas,text=" - NK").grid(column=0,row=1)
-    global NK
-    NK = tk.StringVar()
-    tk.Entry(indomCanvas,textvariable=NK).grid(column=1,row=1)
-    #NEQ
-    tk.Label(indomCanvas,text=" - NEQ").grid(column=0,row=2)
-    global NEQ
-    NEQ= tk.StringVar()
-    tk.Entry(indomCanvas,textvariable=NEQ).grid(column=1,row=2)
-    #NPH
-    tk.Label(indomCanvas,text=" - NPH").grid(column=0,row=3)
-    global NPH
-    NPH = tk.StringVar()
-    tk.Entry(indomCanvas,textvariable=NPH).grid(column=1,row=3)
-    #NB
-    tk.Label(indomCanvas,text=" - NB").grid(column=0,row=4)
-    global NB
-    NB = tk.StringVar()
-    tk.Entry(indomCanvas,textvariable=NB).grid(column=1,row=4)
-    #NKIN
-    tk.Label(indomCanvas,text=" - NKIN").grid(column=0,row=5)
-    global NKIN
-    NKIN = tk.StringVar()
-    tk.Entry(indomCanvas,textvariable=NKIN).grid(column=1,row=5)
+    #MAT
+    rockoptions = ["placeholder", "chicken"]
+    tk.Label(indomCanvas,text="Material Names - MAT",bg="#ffdfa5").grid(column=0,row=1)
+    tk.Label(indomCanvas,text=rockoptions).grid(column=1,row=1)
+    #X1
+    tk.Label(indomCanvas,text="Primary Variable 1, depending on EOS - X1",bg="#ffdfa5").grid(column=0,row=2)
+    global X1
+    X1= tk.StringVar()
+    tk.Entry(indomCanvas,textvariable=X1).grid(column=1,row=2)
+    #X2
+    tk.Label(indomCanvas,text="Primary Variable 2, depending on EOS - X2",bg="#ffdfa5").grid(column=0,row=3)
+    global X2
+    X2 = tk.StringVar()
+    tk.Entry(indomCanvas,textvariable=X2).grid(column=1,row=3)
+    #X3
+    tk.Label(indomCanvas,text="Primary Variable 3, depending on EOS - X3",bg="#ffdfa5").grid(column=0,row=4)
+    global X3
+    X3 = tk.StringVar()
+    tk.Entry(indomCanvas,textvariable=X3).grid(column=1,row=4)
+    #X4
+    tk.Label(indomCanvas,text="Primary Variable 4, depending on EOS - X4",bg="#ffdfa5").grid(column=0,row=5)
+    global X4
+    X4 = tk.StringVar()
+    tk.Entry(indomCanvas,textvariable=X4).grid(column=1,row=5)
     #SAVE
     def indomSave():
         indom = []
-        indom = [NK.get(),NEQ.get(),NPH.get(),NB.get(),NKIN.get()]
+        indom = [rockoptions,X1.get(),X2.get(),X3.get(),X4.get()]
         print(indom)
     global saveindom
     saveindom = tk.Button(indomCanvas,text="Save BEFORE Switching Page", command=indomSave, bg="#00ff00")
     saveindom.grid(column=0,row=0,columnspan=2)
-tk.Button(lcanvas, text="indom", command=indomclick).place(x=10,y=170)
+tk.Button(lcanvas, text="INDOM", command=indomclick).place(x=10,y=250)
 
 root.mainloop()
