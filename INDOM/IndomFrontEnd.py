@@ -49,6 +49,6 @@ def indomclick():
     global saveindom
     saveindom = tk.Button(indomCanvas,text="Save BEFORE Switching Page", command=indomSave, bg="#00ff00")
     saveindom.grid(column=0,row=0,columnspan=2)
-tk.Button(lcanvas, text="indom", command=indomclick).place(x=10,y=90)
+tk.Button(lcanvas, text="indom", command=indomclick).place(x=10,y=170)
 
 root.mainloop()
