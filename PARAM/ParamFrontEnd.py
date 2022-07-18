@@ -1,8 +1,10 @@
 from time import sleep
 import tkinter as tk
 from tkinter import *
+from tkinter import messagebox,messagebox
 from tkinter import ttk
 import os
+import tkinter
 root = tk.Tk()
 lcanvas = tk.Canvas(root, width=340, height=800, bg="#f0f0f0")
 lcanvas.pack(side="left")
@@ -42,7 +44,21 @@ def paramclick():
     MCYPR = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=MCYPR).grid(column=1,row=5)
     #MOP (I) I=1,24
-    tk.Label(paramCanvas,text="See Manual p. 163; separate by commas - MOP (I) I=1 to 24",bg="#ffffc5").grid(column=0,row=6)
+    def mop():
+        tk.messagebox.showinfo(title="MOP Descriptions",message="""1: If not 0, short printout for non-convergent iterations will be generated.
+2: Main Subroutine - CYCIT
+3: Flow and accumulation terms - MULTI
+4: Sinks/Sources - QU
+5: Equation of State - EOS
+6: Linear Equations - LINEQ
+7: If not 0, will printout input data w/ calculational choices from MOP(9+)
+9: Enter 0 to determine composition of fluid according to relative mobilities in source element, or 1 for source fluid to have same phase composition
+10: Interpolation Formulas - Enter 0 for C(S)=CDRY+SPRT(S1)*|CWET-CDRY|, or 1 for CDRY+S1*(CWET-CDRY)
+11: 0 for upstream-weighted (WUP) mobilities and permeability, 1 for WUP permeability and mobilities average between adjacent elements, 2 for WUP mobilities and harmonic-weighted perm, 3 for averaged mob and harmonic perm, 4 for harmonic mob and perm
+12: 0 for 
+*Under Construction*
+""")
+    tk.Button(paramCanvas,text="MOP (I) I=1 to 24; separate by commas (click for more info)",command=mop,bg="#ffffc5").grid(column=0,row=6)
     global MOPII124
     MOPII124 = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=MOPII124).grid(column=1,row=6)
