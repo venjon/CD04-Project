@@ -369,7 +369,7 @@ def paramclick():
     #SAVE
     def paramSave():
         param = []
-        param = [NOITE.get(),KDATA.get(),MCYC.get(),MESC.get(),MCYPR.get(),MOPII124.get(),TXP.get(),BE.get(),TSTART.get(),TIMAX.get(),DELTENORNDLT.get(),DELTMX.get(),ELST.get(),GF.get(),REDLT.get(),SCALE.get()]
+        param = [NOITE.get(),KDATA.get(),MCYC.get(),MESC.get(),MCYPR.get(),MOPII124.get(),TEXP.get(),BE.get(),TSTART.get(),TIMAX.get(),DELTENORNDLT.get(),DELTMX.get(),ELST.get(),GF.get(),REDLT.get(),SCALE.get()]
         print(param)
     global saveparam
     saveparam = tk.Button(paramCanvas,text="Save BEFORE Switching Page", command=paramSave, bg="#00ff00")
