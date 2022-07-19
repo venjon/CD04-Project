@@ -13,31 +13,31 @@ def selecclick():
     global selecCanvas
     #for x in range():
         #rightPanels[x].pack_forget()
-    selecCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffbebe")
+    selecCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ceae8f")
     #rightPanels.append(selecCanvas)
     selecCanvas.pack()
     #MATSLV
-    tk.Label(selecCanvas,text="Linear Equation Solver - MATSLV",bg="#ffbebe").grid(column=0,row=1)
+    tk.Label(selecCanvas,text="Linear Equation Solver - MATSLV",bg="#ceae8f").grid(column=0,row=1)
     global MATSLV
     MATSLV = tk.StringVar()
     tk.Entry(selecCanvas,textvariable=MATSLV).grid(column=1,row=1)
     #ZPROCS
-    tk.Label(selecCanvas,text="Z-preconditioning - ZPROCS",bg="#ffbebe").grid(column=0,row=2)
+    tk.Label(selecCanvas,text="Z-preconditioning - ZPROCS",bg="#ceae8f").grid(column=0,row=2)
     global ZPROCS
     ZPROCS= tk.StringVar()
     tk.Entry(selecCanvas,textvariable=ZPROCS).grid(column=1,row=2)
     #OPROCS
-    tk.Label(selecCanvas,text="O-preconditioning - OPROCS",bg="#ffbebe").grid(column=0,row=3)
+    tk.Label(selecCanvas,text="O-preconditioning - OPROCS",bg="#ceae8f").grid(column=0,row=3)
     global OPROCS
     OPROCS = tk.StringVar()
     tk.Entry(selecCanvas,textvariable=OPROCS).grid(column=1,row=3)
     #RITMAX
-    tk.Label(selecCanvas,text="Max # of CG Iterations / Total # of Equations - RITMAX",bg="#ffbebe").grid(column=0,row=4)
+    tk.Label(selecCanvas,text="Max # of CG Iterations / Total # of Equations - RITMAX",bg="#ceae8f").grid(column=0,row=4)
     global RITMAX
     RITMAX = tk.StringVar()
     tk.Entry(selecCanvas,textvariable=RITMAX).grid(column=1,row=4)
     #CLOSUR
-    tk.Label(selecCanvas,text="Convergence Criterion for CG Iterations - CLOSUR",bg="#ffbebe").grid(column=0,row=5)
+    tk.Label(selecCanvas,text="Convergence Criterion for CG Iterations - CLOSUR",bg="#ceae8f").grid(column=0,row=5)
     global CLOSUR
     CLOSUR = tk.StringVar()
     tk.Entry(selecCanvas,textvariable=CLOSUR).grid(column=1,row=5)
