@@ -49,6 +49,6 @@ def selecclick():
     global saveselec
     saveselec = tk.Button(selecCanvas,text="Save BEFORE Switching Page", command=selecSave, bg="#00ff00")
     saveselec.grid(column=0,row=0,columnspan=2)
-tk.Button(lcanvas, text="SELEC", command=selecclick).place(x=10,y=170)
+tk.Button(lcanvas, text="SELEC", command=selecclick).place(x=10,y=330)
 
 root.mainloop()

@@ -37,6 +37,6 @@ def diffuclick():
     global savediffu
     savediffu = tk.Button(diffuCanvas,text="Save BEFORE Switching Page", command=diffuSave, bg="#00ff00")
     savediffu.grid(column=0,row=0,columnspan=2)
-tk.Button(lcanvas, text="DIFFU", command=diffuclick).place(x=10,y=170)
+tk.Button(lcanvas, text="DIFFU", command=diffuclick).place(x=10,y=290)
 
 root.mainloop()

@@ -20,15 +20,15 @@ def indomclick():
     rockoptions = ["placeholder", "chicken"]
     tk.Label(indomCanvas,text="Material Names - MAT",bg="#ffdfa5").grid(column=0,row=1)
     tk.Label(indomCanvas,text=rockoptions).grid(column=1,row=1)
-    #X1
+    #X
     tk.Label(indomCanvas,text="Primary Variables; quantity depends on EOS (separate by commas) - X",bg="#ffdfa5").grid(column=0,row=2)
-    global X1
-    X1= tk.StringVar()
-    tk.Entry(indomCanvas,textvariable=X1).grid(column=1,row=2)
+    global X
+    X= tk.StringVar()
+    tk.Entry(indomCanvas,textvariable=X).grid(column=1,row=2)
     #SAVE
     def indomSave():
         indom = []
-        indom = [rockoptions,X1.get()]
+        indom = [rockoptions,X.get()]
         print(indom)
     global saveindom
     saveindom = tk.Button(indomCanvas,text="Save BEFORE Switching Page", command=indomSave, bg="#00ff00")

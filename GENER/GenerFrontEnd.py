@@ -104,6 +104,6 @@ def generclick():
     global savegener
     savegener = tk.Button(generCanvas,text="Save BEFORE Switching Page", command=generSave, bg="#00ff00")
     savegener.grid(column=0,row=0,columnspan=2)
-tk.Button(lcanvas, text="GENER", command=generclick).place(x=10,y=130)
+tk.Button(lcanvas, text="GENER", command=generclick).place(x=10,y=210)
 
 root.mainloop()
