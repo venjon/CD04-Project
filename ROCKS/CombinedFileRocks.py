@@ -251,11 +251,11 @@ rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7
 rock_elements = [TITLE, MAT, NAD.get(), DROK.get(), POR.get(), PER1.get(), PER2.get(), PER3.get(), CWET.get(), SPHT.get(),COM.get(), EXPAN.get(), CDRY.get(), TORTX.get(), GK.get(), XKD3.get(), XKD3.get(), XKD4.get(), IRP.get(), RP1.get(), RP2.get(),RP3.get(), RP4.get(), RP5.get(), RP6.get(), RP7.get(), ICP.get(), CP1.get(), CP2.get(), CP3.get(), CP4.get(), CP5.get(), CP6.get(), CP7.get()]
 
 def addrocks(elements):
-	for i in range(len(elements)):
-		if i==0:
+	for i in range(1,len(elements)):
+		'''if i==0:
 			print(elements[i])
-			print(rockline)
-		elif i==1 or i==2:
+			print(rockline)'''
+		if i==1 or i==2:
 			print(fillstring(elements[i],5), end="")
 		elif i<=9:
 			print(fillstring(elements[i],10), end="")
@@ -281,6 +281,10 @@ def addrocks(elements):
 		elif(i<=32):
 			print(fillstring(elements[i],10), end="")		
 	print()
+
+
+print(var0.get())
+print(rockline)
 for key in rockDict:
   dummy = rockDict[key]
   addrocks(dummy)
