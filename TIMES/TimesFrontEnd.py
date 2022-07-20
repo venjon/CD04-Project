@@ -11,12 +11,12 @@ lcanvas.pack(side="left")
 rcanvas = tk.Canvas(root, width=460, height=800, bg="white",)
 rcanvas.pack(side="right")
 
+#TIMES
 def timesclick():
     global timesCanvas
-    #for x in range():
-        #rightPanels[x].pack_forget()
+    clear()
     timesCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#e9d1ff")
-    #rightPanels.append(timesCanvas)
+    rightPanels.append(timesCanvas)
     timesCanvas.pack()
     #ITI
     tk.Label(timesCanvas,text="Number of Times Provided on Records - ITI",bg="#e9d1ff").grid(column=0,row=1)

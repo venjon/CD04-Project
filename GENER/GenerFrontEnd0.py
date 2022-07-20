@@ -19,133 +19,135 @@ title = var0.get()
 #GENER
 def GenerOptionMenu_SelectionEvent(event):
     global GenerChoice
-    GenerChoice = var1.get()
+    GenerChoice = var9.get()
+    clear()
     if GenerChoice == "Add Generator":
-        rc=-1
-        newMat = tk.Toplevel(root)
-        newMat.geometry("200x100")
-        tk.Label(newMat,text="""Enter a name for your new sample
+        gc=-1
+        newGener = tk.Toplevel(root)
+        newGener.geometry("200x100")
+        tk.Label(newGener,text="""Enter a name for your new sample
         (preferably 5 characters)
         DO NOT INCLUDE SPACES""").pack()
-        global newMatName
-        newMatName = tk.StringVar()
-        tk.Entry(newMat, width=30, textvariable=newMatName).pack()
-        def var3():
-            generoptions.append(newMatName.get())
-            newMat.destroy()
-            generList = tk.OptionMenu(lcanvas, var1, *(generoptions), command = GenerOptionMenu_SelectionEvent).place(x=10,y=50)
+        global newGenerName
+        newGenerName = tk.StringVar()
+        tk.Entry(newGener, width=30, textvariable=newGenerName).pack()
+        def var8():
+            generoptions.append(newGenerName.get())
+            newGener.destroy()
+            generList = tk.OptionMenu(lcanvas, var9, *(generoptions), command = GenerOptionMenu_SelectionEvent).place(x=10,y=50)
             newgenercanvas = tk.Canvas(rcanvas, width=460, height=800, bg="#c1e2fe")
             generoptionscanvas.append(newgenercanvas)
-            generDict[generoptions[rc]] = []
+            rightPanels.append(newgenercanvas)
+            generDict[generoptions[gc]] = []
             #EL
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text=" - EL").grid(column=0,row=1)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text=" - EL").grid(column=0,row=1)
             global EL
             EL = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=EL).grid(column=1,row=1)
+            tk.Entry(generoptionscanvas[gc],textvariable=EL).grid(column=1,row=1)
             #NE
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text=" - NE").grid(column=0,row=2)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text=" - NE").grid(column=0,row=2)
             global NE
             NE = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=NE).grid(column=1,row=2)
+            tk.Entry(generoptionscanvas[gc],textvariable=NE).grid(column=1,row=2)
             #SL
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Gener Grain Density (kg/m^3) - SL").grid(column=0,row=3)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Gener Grain Density (kg/m^3) - SL").grid(column=0,row=3)
             global SL
             SL = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=SL).grid(column=1,row=3)
+            tk.Entry(generoptionscanvas[gc],textvariable=SL).grid(column=1,row=3)
             #NS
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Porosity (if not included in INCON) - NS").grid(column=0,row=4)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Porosity (if not included in INCON) - NS").grid(column=0,row=4)
             global NS
             NS = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=NS).grid(column=1,row=4)
+            tk.Entry(generoptionscanvas[gc],textvariable=NS).grid(column=1,row=4)
             #PER(1)
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 1 - PER(1)").grid(column=0,row=5)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 1 - PER(1)").grid(column=0,row=5)
             global NSEQ
             NSEQ = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=NSEQ).grid(column=1,row=5)
+            tk.Entry(generoptionscanvas[gc],textvariable=NSEQ).grid(column=1,row=5)
             #PER(2)
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 2 - PER(2)").grid(column=0,row=6)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 2 - PER(2)").grid(column=0,row=6)
             global NADD
             NADD = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=NADD).grid(column=1,row=6)
+            tk.Entry(generoptionscanvas[gc],textvariable=NADD).grid(column=1,row=6)
             #PER(3)
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 3 - PER(3)").grid(column=0,row=7)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 3 - PER(3)").grid(column=0,row=7)
             global NADS
             NADS = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=NADS).grid(column=1,row=7)
+            tk.Entry(generoptionscanvas[gc],textvariable=NADS).grid(column=1,row=7)
             #LTAB
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Formation Heat Conductivity in Liquid (W/m°C)- LTAB").grid(column=0,row=8)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Formation Heat Conductivity in Liquid (W/m°C)- LTAB").grid(column=0,row=8)
             global LTAB
             LTAB = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=LTAB).grid(column=1,row=8)
+            tk.Entry(generoptionscanvas[gc],textvariable=LTAB).grid(column=1,row=8)
             #TYPE
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Gener Grain Specific Heat (J/kg°C) - TYPE").grid(column=0,row=9)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Gener Grain Specific Heat (J/kg°C) - TYPE").grid(column=0,row=9)
             global TYPE
             TYPE = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=TYPE).grid(column=1,row=9)
+            tk.Entry(generoptionscanvas[gc],textvariable=TYPE).grid(column=1,row=9)
             #ITAB
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Pore Compressibility - ITAB").grid(column=0,row=10)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Pore Compressibility - ITAB").grid(column=0,row=10)
             global ITAB
             ITAB = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=ITAB).grid(column=1,row=10)
+            tk.Entry(generoptionscanvas[gc],textvariable=ITAB).grid(column=1,row=10)
             #GX
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Pore Expansivity - GX").grid(column=0,row=11)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Pore Expansivity - GX").grid(column=0,row=11)
             global GX
             GX = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=GX).grid(column=1,row=11)
+            tk.Entry(generoptionscanvas[gc],textvariable=GX).grid(column=1,row=11)
             #EX
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Formation Heat Conductivity w/o Liquid (W/m°C) - EX").grid(column=0,row=12)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Formation Heat Conductivity w/o Liquid (W/m°C) - EX").grid(column=0,row=12)
             global EX
             EX = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=EX).grid(column=1,row=12)
+            tk.Entry(generoptionscanvas[gc],textvariable=EX).grid(column=1,row=12)
             #HG
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Tortuosity Factor - HG").grid(column=0,row=13)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Tortuosity Factor - HG").grid(column=0,row=13)
             global HG
             HG = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=HG).grid(column=1,row=13)
+            tk.Entry(generoptionscanvas[gc],textvariable=HG).grid(column=1,row=13)
             #F1
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Klinkenberg Parameter B [k*(1+b/P)] - F1").grid(column=0,row=14)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Klinkenberg Parameter B [k*(1+b/P)] - F1").grid(column=0,row=14)
             global F1
             F1 = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=F1).grid(column=1,row=14)
+            tk.Entry(generoptionscanvas[gc],textvariable=F1).grid(column=1,row=14)
             #F2
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Distribution Coefficient of Parent Radionuclide - F2").grid(column=0,row=15)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Distribution Coefficient of Parent Radionuclide - F2").grid(column=0,row=15)
             global F2
             F2 = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=F2).grid(column=1,row=15)
+            tk.Entry(generoptionscanvas[gc],textvariable=F2).grid(column=1,row=15)
             #F3
-            tk.Label(generoptionscanvas[rc],bg="#c1e2fe",text="Distribution Coefficient of Daughter Radionuclide - F3").grid(column=0,row=16)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Distribution Coefficient of Daughter Radionuclide - F3").grid(column=0,row=16)
             global F3
             F3 = tk.StringVar()
-            tk.Entry(generoptionscanvas[rc],textvariable=F3).grid(column=1,row=16)
+            tk.Entry(generoptionscanvas[gc],textvariable=F3).grid(column=1,row=16)
             #SAVE
             def generSave():
-                generDict[generoptions[rc]] = []
-                generDict[generoptions[rc]] = [EL,NE.get(),SL.get(), NS.get(), NSEQ.get(), NADD.get(), NADS.get(), LTAB.get(), TYPE.get(), ITAB.get(), GX.get(), EX.get(), HG.get(), F1.get(), F2.get(), F3.get()]
+                generDict[generoptions[gc]] = []
+                generDict[generoptions[gc]] = [EL,NE.get(),SL.get(), NS.get(), NSEQ.get(), NADD.get(), NADS.get(), LTAB.get(), TYPE.get(), ITAB.get(), GX.get(), EX.get(), HG.get(), F1.get(), F2.get(), F3.get()]
                 print(generDict)
             global savegener
-            savegener = tk.Button(generoptionscanvas[rc],text="Save BEFORE Switching Page", command=generSave, bg="#00ff00")
+            savegener = tk.Button(generoptionscanvas[gc],text="Save BEFORE Switching Page", command=generSave, bg="#00ff00")
             savegener.grid(column=0,row=0,columnspan=2)
-        tk.Button(newMat, text="Enter", command=lambda:var3()).pack()
+        tk.Button(newGener, text="Enter", command=lambda:var8()).pack()
     else:
-        rc = generoptions.index(GenerChoice)
+        gc = generoptions.index(GenerChoice)
         for x in range(1, len(generoptionscanvas)):
             generoptionscanvas[x].pack_forget()
         savegener.grid_forget()
         def generSave2():
-            print(rc)
-            generDict[generoptions[rc]] = [EL.get(),NE.get(),SL.get(), NS.get(), NSEQ.get(), NADD.get(), NADS.get(), LTAB.get(), TYPE.get(), ITAB.get(), GX.get(), EX.get(), HG.get(), F1.get(), F2.get(), F3.get()]
+            print(gc)
+            generDict[generoptions[gc]] = [EL.get(),NE.get(),SL.get(), NS.get(), NSEQ.get(), NADD.get(), NADS.get(), LTAB.get(), TYPE.get(), ITAB.get(), GX.get(), EX.get(), HG.get(), F1.get(), F2.get(), F3.get()]
             print(generDict)
         savegener.config(command=generSave2)
         savegener.grid(column=0,row=0,columnspan=2)
-        generoptionscanvas[rc].pack()
-        print(rc)
+        generoptionscanvas[gc].pack()
+        print(gc)
 
-var1 = tk.StringVar()
-var1.set("Generators")
+var9 = tk.StringVar()
+var9.set("Generators")
 generoptions = ["Add Generator"]
 generoptionscanvas = ["placeholder"]
-generList = tk.OptionMenu(lcanvas, var1, *(generoptions), command = GenerOptionMenu_SelectionEvent)
+generList = tk.OptionMenu(lcanvas, var9, *(generoptions), command = GenerOptionMenu_SelectionEvent)
 generDict = {}
-generList.place(x=10,y=50)
+generList.place(x=10,y=210)
 
 root.mainloop()

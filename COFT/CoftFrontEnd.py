@@ -9,12 +9,12 @@ lcanvas.pack(side="left")
 rcanvas = tk.Canvas(root, width=460, height=800, bg="white",)
 rcanvas.pack(side="right")
 
+#COFT
 def coftclick():
     global coftCanvas
-    #for x in range():
-        #rightPanels[x].pack_forget()
+    clear()
     coftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#c0c0c0")
-    #rightPanels.append(coftCanvas)
+    rightPanels.append(coftCanvas)
     coftCanvas.pack()
     #ECOFT
     tk.Label(coftCanvas,bg="#c0c0c0",text="Connection Name (pair of element names) - ECOFT").grid(column=0,row=1)

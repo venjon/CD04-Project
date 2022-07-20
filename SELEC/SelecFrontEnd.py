@@ -9,12 +9,12 @@ lcanvas.pack(side="left")
 rcanvas = tk.Canvas(root, width=460, height=800, bg="white",)
 rcanvas.pack(side="right")
 
+#SELEC
 def selecclick():
     global selecCanvas
-    #for x in range():
-        #rightPanels[x].pack_forget()
+    clear()
     selecCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ceae8f")
-    #rightPanels.append(selecCanvas)
+    rightPanels.append(selecCanvas)
     selecCanvas.pack()
     #IEI
     tk.Label(selecCanvas,text="""Number of Records w/ Floating Point Numbers That Will Be Read

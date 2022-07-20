@@ -9,12 +9,12 @@ lcanvas.pack(side="left")
 rcanvas = tk.Canvas(root, width=460, height=800, bg="white",)
 rcanvas.pack(side="right")
 
+#SOLVR
 def solvrclick():
     global solvrCanvas
-    #for x in range():
-        #rightPanels[x].pack_forget()
+    clear()
     solvrCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffbebe")
-    #rightPanels.append(solvrCanvas)
+    rightPanels.append(solvrCanvas)
     solvrCanvas.pack()
     #MATSLV
     tk.Label(solvrCanvas,text="Linear Equation Solver - MATSLV",bg="#ffbebe").grid(column=0,row=1)

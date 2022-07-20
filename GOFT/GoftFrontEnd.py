@@ -9,12 +9,12 @@ lcanvas.pack(side="left")
 rcanvas = tk.Canvas(root, width=460, height=800, bg="white",)
 rcanvas.pack(side="right")
 
+#GOFT
 def goftclick():
     global goftCanvas
-    #for x in range():
-        #rightPanels[x].pack_forget()
+    clear()
     goftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffec85")
-    #rightPanels.append(goftCanvas)
+    rightPanels.append(goftCanvas)
     goftCanvas.pack()
     #EGOFT
     tk.Label(goftCanvas,bg="#ffec85",text="Element that has Sink/Source Defined - EGOFT").grid(column=0,row=1)
