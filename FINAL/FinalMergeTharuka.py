@@ -5,9 +5,9 @@ from tkinter import ttk
 from tkinter import messagebox
 import os
 root = tk.Tk()
-lcanvas = tk.Canvas(root, width=340, height=800, bg="#f0f0f0")
+lcanvas = tk.Canvas(root, width=200, height=800, bg="#f0f0f0")
 lcanvas.pack(side="left")
-rcanvas = tk.Canvas(root, width=460, height=800, bg="white",)
+rcanvas = tk.Canvas(root, width=600, height=800, bg="white",)
 rcanvas.pack(side="right")
 rightPanels=[]
 def clear():
@@ -28,10 +28,10 @@ coft=[]
 goft=[]
 
 #TITLE
-titleLabel = tk.Label(lcanvas, text="Document Title (max 80 characters):").place(x=10, y=10)
+titleLabel = tk.Label(lcanvas, text="Document Title:").place(x=10, y=10)
 var0 = tk.StringVar()
 titleEntry = tk.Entry(lcanvas, textvariable=var0)
-titleEntry.place(x=207,y=10)
+titleEntry.place(x=100,y=10)
 title = var0.get()
 
 #ROCKS
@@ -53,7 +53,7 @@ def RocksOptionMenu_SelectionEvent(event):
             rockoptions.append(newMatName.get())
             newMat.destroy()
             rockList = tk.OptionMenu(lcanvas, var1, *(rockoptions), command = RocksOptionMenu_SelectionEvent).place(x=10,y=50)
-            newrockscanvas = tk.Canvas(rcanvas, width=460, height=800, bg="#c1e2fe")
+            newrockscanvas = tk.Canvas(rcanvas, width=600, height=800, bg="#c1e2fe")
             rockoptionscanvas.append(newrockscanvas)
             rightPanels.append(newrockscanvas)
             rockDict[rockoptions[rc]] = []
@@ -254,7 +254,7 @@ rockList.place(x=10,y=50)
 def multiclick():
     global multiCanvas
     clear()
-    multiCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#b1fbbd")
+    multiCanvas = tk.Canvas(rcanvas,width=600,height=800,bg="#b1fbbd")
     rightPanels.append(multiCanvas)
     multiCanvas.pack()
     #NK
@@ -298,7 +298,7 @@ multilist=[]
 def paramclick():
     global paramCanvas
     clear()
-    paramCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffffc5")
+    paramCanvas = tk.Canvas(rcanvas,width=600,height=800,bg="#ffffc5")
     rightPanels.append(paramCanvas)
     paramCanvas.pack()
     #NOITE
@@ -341,7 +341,7 @@ def paramclick():
 12: 0 for 
 *Under Construction*
 """)
-    tk.Button(paramCanvas,text="MOP (I) I=1 to 24; separate by commas (click for more info)",command=mop,bg="#ffffc5").grid(column=0,row=6)
+    tk.Button(paramCanvas,text="MOP (I) I=1 to 24; place in ",command=mop,bg="#ffffc5").grid(column=0,row=6)
     global MOPII124
     MOPII124 = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=MOPII124).grid(column=1,row=6)
@@ -464,7 +464,7 @@ tk.Button(lcanvas, text="PARAM", command=paramclick).place(x=10,y=130)
 def solvrclick():
     global solvrCanvas
     clear()
-    solvrCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffbebe")
+    solvrCanvas = tk.Canvas(rcanvas,width=600,height=800,bg="#ffbebe")
     rightPanels.append(solvrCanvas)
     solvrCanvas.pack()
     #MATSLV
@@ -565,7 +565,7 @@ tk.Button(lcanvas, text="DIFFU", command=diffuclick).place(x=10,y=290)
 def selecclick():
     global selecCanvas
     clear()
-    selecCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ceae8f")
+    selecCanvas = tk.Canvas(rcanvas,width=600,height=800,bg="#ceae8f")
     rightPanels.append(selecCanvas)
     selecCanvas.pack()
     #IEI
@@ -594,7 +594,7 @@ tk.Button(lcanvas, text="SELEC", command=selecclick).place(x=10,y=330)
 def timesclick():
     global timesCanvas
     clear()
-    timesCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#e9d1ff")
+    timesCanvas = tk.Canvas(rcanvas,width=600,height=800,bg="#e9d1ff")
     rightPanels.append(timesCanvas)
     timesCanvas.pack()
     #ITI
@@ -636,7 +636,7 @@ tk.Button(lcanvas, text="TIMES", command=timesclick).place(x=10,y=370)
 def foftclick():
     global foftCanvas
     clear()
-    foftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#96fff0")
+    foftCanvas = tk.Canvas(rcanvas,width=600,height=800,bg="#96fff0")
     rightPanels.append(foftCanvas)
     foftCanvas.pack()
     #EOFT
@@ -658,7 +658,7 @@ tk.Button(lcanvas, text="FOFT", command=foftclick).place(x=10,y=410)
 def coftclick():
     global coftCanvas
     clear()
-    coftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#c0c0c0")
+    coftCanvas = tk.Canvas(rcanvas,width=600,height=800,bg="#c0c0c0")
     rightPanels.append(coftCanvas)
     coftCanvas.pack()
     #ECOFT
@@ -680,7 +680,7 @@ tk.Button(lcanvas, text="COFT", command=coftclick).place(x=10,y=450)
 def goftclick():
     global goftCanvas
     clear()
-    goftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffec85")
+    goftCanvas = tk.Canvas(rcanvas,width=600,height=800,bg="#ffec85")
     rightPanels.append(goftCanvas)
     goftCanvas.pack()
     #EGOFT
