@@ -117,10 +117,60 @@ def paramclick():
     global DLTI
     DLTI = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=DLTI).grid(column=1,row=17)
+    #RE1
+    tk.Label(paramCanvas,bg="#ffffc5",text="Number of Mass Components - RE1").grid(column=0,row=18)
+    global RE1
+    RE1 = tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=RE1).grid(column=1,row=18)
+    #RE2
+    tk.Label(paramCanvas,bg="#ffffc5",text="Balance Equations per Grid Block - RE2").grid(column=0,row=19)
+    global RE2
+    RE2= tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=RE2).grid(column=1,row=19)
+    #U
+    tk.Label(paramCanvas,bg="#ffffc5",text="Number of Phases - U").grid(column=0,row=20)
+    global U
+    U = tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=U).grid(column=1,row=20)
+    #WUP
+    tk.Label(paramCanvas,bg="#ffffc5",text="Number of Secondary Parameters w/o Component Mass Fractions - WUP").grid(column=0,row=21)
+    global WUP
+    WUP = tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=WUP).grid(column=1,row=21)
+    #WNR
+    tk.Label(paramCanvas,bg="#ffffc5",text="Number of Mass Components in INCON - WNR").grid(column=0,row=22)
+    global WNR
+    WNR = tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=WNR).grid(column=1,row=22)
+    #DFAC
+    tk.Label(paramCanvas,bg="#ffffc5",text="Number of Mass Components - DFAC").grid(column=0,row=23)
+    global DFAC
+    DFAC = tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=DFAC).grid(column=1,row=23)
+    #DEP1
+    tk.Label(paramCanvas,bg="#ffffc5",text="Balance Equations per Grid Block - DEP(1)").grid(column=0,row=24)
+    global DEP1
+    DEP1= tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=DEP1).grid(column=1,row=24)
+    #DEP2
+    tk.Label(paramCanvas,bg="#ffffc5",text="Number of Phases - DEP(2)").grid(column=0,row=25)
+    global DEP2
+    DEP2 = tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=DEP2).grid(column=1,row=25)
+    #DEP3
+    tk.Label(paramCanvas,bg="#ffffc5",text="Number of Secondary Parameters w/o Component Mass Fractions - DEP(3)").grid(column=0,row=26)
+    global DEP3
+    DEP3 = tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=DEP3).grid(column=1,row=26)
+    #DEP4
+    tk.Label(paramCanvas,bg="#ffffc5",text="Number of Mass Components in INCON - DEP(4)").grid(column=0,row=27)
+    global DEP4
+    DEP4 = tk.StringVar()
+    tk.Entry(paramCanvas,textvariable=DEP4).grid(column=1,row=27)
     #SAVE
     def paramSave():
         param = []
-        param = [NOITE.get(),KDATA.get(),MCYC.get(),MSEC.get(),MCYPR.get(),MOPII124.get(),TEXP.get(),BE.get(),TSTART.get(),TIMAX.get(),DELTENORNDLT.get(),DELTMX.get(),ELST.get(),GF.get(),REDLT.get(),SCALE.get(),DLTI.get()]
+        param = [NOITE.get(),KDATA.get(),MCYC.get(),MSEC.get(),MCYPR.get(),MOPII124.get(),TEXP.get(),BE.get(),TSTART.get(),TIMAX.get(),DELTENORNDLT.get(),DELTMX.get(),ELST.get(),GF.get(),REDLT.get(),SCALE.get(),DLTI.get(),RE1.get(),RE2.get(),U.get(),WUP.get(),WNR.get(),DFAC.get(),DEP1.get(),DEP2.get(),DEP3.get(),DEP4.get()]
         print(param)
     global saveparam
     saveparam = tk.Button(paramCanvas,text="Save BEFORE Switching Page", command=paramSave, bg="#00ff00")

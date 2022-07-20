@@ -13,11 +13,11 @@ def foftclick():
     global foftCanvas
     #for x in range():
         #rightPanels[x].pack_forget()
-    foftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#b1fbbd")
+    foftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#96fff0")
     #rightPanels.append(foftCanvas)
     foftCanvas.pack()
     #EOFT
-    tk.Label(foftCanvas,bg="#b1fbbd",text="Element Name - EOFT").grid(column=0,row=1)
+    tk.Label(foftCanvas,bg="#96fff0",text="Element Name - EOFT").grid(column=0,row=1)
     global EOFT
     EOFT = tk.StringVar()
     tk.Entry(foftCanvas,textvariable=EOFT).grid(column=1,row=1)
@@ -29,6 +29,6 @@ def foftclick():
     global savefoft
     savefoft = tk.Button(foftCanvas,text="Save BEFORE Switching Page", command=foftSave, bg="#00ff00")
     savefoft.grid(column=0,row=0,columnspan=2)
-tk.Button(lcanvas, text="FOFT", command=foftclick).place(x=10,y=90)
+tk.Button(lcanvas, text="FOFT", command=foftclick).place(x=10,y=410)
 
 root.mainloop()

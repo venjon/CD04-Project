@@ -16,35 +16,22 @@ def selecclick():
     selecCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ceae8f")
     #rightPanels.append(selecCanvas)
     selecCanvas.pack()
-    #MATSLV
-    tk.Label(selecCanvas,text="Linear Equation Solver - MATSLV",bg="#ceae8f").grid(column=0,row=1)
-    global MATSLV
-    MATSLV = tk.StringVar()
-    tk.Entry(selecCanvas,textvariable=MATSLV).grid(column=1,row=1)
-    #ZPROCS
-    tk.Label(selecCanvas,text="Z-preconditioning - ZPROCS",bg="#ceae8f").grid(column=0,row=2)
-    global ZPROCS
-    ZPROCS= tk.StringVar()
-    tk.Entry(selecCanvas,textvariable=ZPROCS).grid(column=1,row=2)
-    #OPROCS
-    tk.Label(selecCanvas,text="O-preconditioning - OPROCS",bg="#ceae8f").grid(column=0,row=3)
-    global OPROCS
-    OPROCS = tk.StringVar()
-    tk.Entry(selecCanvas,textvariable=OPROCS).grid(column=1,row=3)
-    #RITMAX
-    tk.Label(selecCanvas,text="Max # of CG Iterations / Total # of Equations - RITMAX",bg="#ceae8f").grid(column=0,row=4)
-    global RITMAX
-    RITMAX = tk.StringVar()
-    tk.Entry(selecCanvas,textvariable=RITMAX).grid(column=1,row=4)
-    #CLOSUR
-    tk.Label(selecCanvas,text="Convergence Criterion for CG Iterations - CLOSUR",bg="#ceae8f").grid(column=0,row=5)
-    global CLOSUR
-    CLOSUR = tk.StringVar()
-    tk.Entry(selecCanvas,textvariable=CLOSUR).grid(column=1,row=5)
+    #IEI
+    tk.Label(selecCanvas,text="""Number of Records w/ Floating Point Numbers That Will Be Read
+(separate by commas) - IE(I) - I=1 to 16""",bg="#ceae8f").grid(column=0,row=1)
+    global IEI
+    IEI = tk.StringVar()
+    tk.Entry(selecCanvas,textvariable=IEI).grid(column=1,row=1)
+    #FEI
+    tk.Label(selecCanvas,text="""Records w/ Floating Point Numbers
+as specified in IE(1) (separate by commas) - FE(I) - I=1 to 8*IE(1)""",bg="#ceae8f").grid(column=0,row=2)
+    global FEI
+    FEI= tk.StringVar()
+    tk.Entry(selecCanvas,textvariable=FEI).grid(column=1,row=2)
     #SAVE
     def selecSave():
         selec = []
-        selec = [MATSLV.get(),ZPROCS.get(),OPROCS.get(),RITMAX.get(),CLOSUR.get()]
+        selec = [IEI.get(),FEI.get()]
         print(selec)
     global saveselec
     saveselec = tk.Button(selecCanvas,text="Save BEFORE Switching Page", command=selecSave, bg="#00ff00")

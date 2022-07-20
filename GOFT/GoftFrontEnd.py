@@ -13,11 +13,11 @@ def goftclick():
     global goftCanvas
     #for x in range():
         #rightPanels[x].pack_forget()
-    goftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#b1fbbd")
+    goftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffec85")
     #rightPanels.append(goftCanvas)
     goftCanvas.pack()
     #EGOFT
-    tk.Label(goftCanvas,bg="#b1fbbd",text="Element that has Sink/Source Defined - EGOFT").grid(column=0,row=1)
+    tk.Label(goftCanvas,bg="#ffec85",text="Element that has Sink/Source Defined - EGOFT").grid(column=0,row=1)
     global EGOFT
     EGOFT = tk.StringVar()
     tk.Entry(goftCanvas,textvariable=EGOFT).grid(column=1,row=1)
@@ -29,6 +29,6 @@ def goftclick():
     global savegoft
     savegoft = tk.Button(goftCanvas,text="Save BEFORE Switching Page", command=goftSave, bg="#00ff00")
     savegoft.grid(column=0,row=0,columnspan=2)
-tk.Button(lcanvas, text="GOFT", command=goftclick).place(x=10,y=90)
+tk.Button(lcanvas, text="GOFT", command=goftclick).place(x=10,y=490)
 
 root.mainloop()

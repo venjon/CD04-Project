@@ -13,11 +13,11 @@ def coftclick():
     global coftCanvas
     #for x in range():
         #rightPanels[x].pack_forget()
-    coftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#b1fbbd")
+    coftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#c0c0c0")
     #rightPanels.append(coftCanvas)
     coftCanvas.pack()
     #ECOFT
-    tk.Label(coftCanvas,bg="#b1fbbd",text="Connection Name - ECOFT").grid(column=0,row=1)
+    tk.Label(coftCanvas,bg="#c0c0c0",text="Connection Name (pair of element names) - ECOFT").grid(column=0,row=1)
     global ECOFT
     ECOFT = tk.StringVar()
     tk.Entry(coftCanvas,textvariable=ECOFT).grid(column=1,row=1)
@@ -29,6 +29,6 @@ def coftclick():
     global savecoft
     savecoft = tk.Button(coftCanvas,text="Save BEFORE Switching Page", command=coftSave, bg="#00ff00")
     savecoft.grid(column=0,row=0,columnspan=2)
-tk.Button(lcanvas, text="COFT", command=coftclick).place(x=10,y=90)
+tk.Button(lcanvas, text="COFT", command=coftclick).place(x=10,y=450)
 
 root.mainloop()
