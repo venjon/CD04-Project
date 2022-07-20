@@ -59,7 +59,7 @@ def fillstring(initial,full_len):
 	charsLeft=full_len - len(initial)
 	finalstring=""
 	if charsLeft < 0:
-		for i in range(5):
+		for i in range(full_len):
 			finalstring+=initial[i]
 	for i in range(charsLeft):
 		finalstring+=" "

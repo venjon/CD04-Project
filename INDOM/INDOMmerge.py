@@ -19,9 +19,9 @@ def indomclick():
     indomCanvas.pack()
     #MAT
     tk.Label(indomCanvas,text="Material Name(s) - MAT",bg="#ffdfa5").grid(column=0,row=1)
-    global MAT
-    MAT= tk.StringVar()
-    tk.Entry(indomCanvas,textvariable=MAT).grid(column=1,row=1)
+    global MATindom
+    MATindom= tk.StringVar()
+    tk.Entry(indomCanvas,textvariable=MATindom).grid(column=1,row=1)
     #X
     tk.Label(indomCanvas,text="Primary Variables; quantity depends on EOS (separate by commas) - X",bg="#ffdfa5").grid(column=0,row=2)
     global X
@@ -30,7 +30,7 @@ def indomclick():
     #SAVE
     def indomSave():
         indom = []
-        indom = [MAT.get(),X.get()]
+        indom = [MATindom.get(),X.get()]
         print(indom)
     global saveindom
     saveindom = tk.Button(indomCanvas,text="Save BEFORE Switching Page", command=indomSave, bg="#00ff00")
@@ -74,7 +74,7 @@ def separate(bigline, full_len):
 def addindom():
     indomline="INDOM----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
     print(indomline)    
-    print(fillstring(MAT.get(),5), end="")
+    print(fillstring(MATindom.get(),5), end="")
     print()
     separate(X.get(),20)
     print()

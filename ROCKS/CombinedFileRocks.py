@@ -270,43 +270,42 @@ def separate(bigline, full_len):
 
 rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
 
-rock_elements = [TITLE, MAT, NAD.get(), DROK.get(), POR.get(), PER1.get(), PER2.get(), PER3.get(), CWET.get(), SPHT.get(),COM.get(), EXPAN.get(), CDRY.get(), TORTX.get(), GK.get(), XKD3.get(), XKD3.get(), XKD4.get(), IRP.get(), RP1.get(), RP2.get(),RP3.get(), RP4.get(), RP5.get(), RP6.get(), RP7.get(), ICP.get(), CP1.get(), CP2.get(), CP3.get(), CP4.get(), CP5.get(), CP6.get(), CP7.get()]
+#rock_elements = [TITLE, MAT, NAD.get(), DROK.get(), POR.get(), PER1.get(), PER2.get(), PER3.get(), CWET.get(), SPHT.get(),COM.get(), EXPAN.get(), CDRY.get(), TORTX.get(), GK.get(), XKD3.get(), XKD3.get(), XKD4.get(), IRP.get(), RP1.get(), RP2.get(),RP3.get(), RP4.get(), RP5.get(), RP6.get(), RP7.get(), ICP.get(), CP1.get(), CP2.get(), CP3.get(), CP4.get(), CP5.get(), CP6.get(), CP7.get()]
 
 def addrocks(elements):
-	for i in range(1,len(elements)):
-		'''if i==0:
-			print(elements[i])
-			print(rockline)'''
-		if i==1 or i==2:
-			print(fillstring(elements[i],5), end="")
-		elif i<=9:
-			print(fillstring(elements[i],10), end="")
-		elif i<=10:
-			print()
-			print(fillstring(elements[i],10), end="")
-		elif i<=16:
-			print(fillstring(elements[i],10), end="")
-		elif i<=17:
-			print()
-			print(fillstring("",5), end="")
-		elif i<=18:
-			print(fillstring("",5), end ="")
-			print(fillstring(elements[i],10), end="")
-		elif i<=24:
-			print(fillstring("",10), end="")
-		elif i<=25:
-			print()
-			print(fillstring("",5), end="")
-		elif(i<=26):
-			print(fillstring("",5), end ="")
-			print(fillstring(elements[i],10), end="")
-		elif(i<=32):
-			print(fillstring(elements[i],10), end="")		
-	print()
+    rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
+    print (rockline)
+    for i in range(1,len(elements)):
+        if i==1 or i==2:
+            print(fillstring(elements[i],5), end="")
+        elif i<=9:
+            print(fillstring(elements[i],10), end="")
+        elif i<=10:#
+            print()
+            print(fillstring(elements[i],10), end="")
+        elif i<=16:
+            print(fillstring(elements[i],10), end="")
+        elif i<=17:
+            print()
+            print(fillstring("",5), end="")
+        elif i<=18:
+            print(fillstring("",5), end ="")
+            print(fillstring(elements[i],10), end="")
+        elif i<=24:
+            print(fillstring("",10), end="")
+        elif i<=25:
+            print()
+            print(fillstring("",5), end="")
+        elif(i<=26):
+            print(fillstring("",5), end ="")
+            print(fillstring(elements[i],10), end="")
+        elif(i<=32):
+            print(fillstring(elements[i],10), end="")		
+    print()
 
 
 print(var0.get())
-print(rockline)
+#print(rockline)
 for key in rockDict:
   dummy = rockDict[key]
   addrocks(dummy)
