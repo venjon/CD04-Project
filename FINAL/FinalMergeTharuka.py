@@ -13,7 +13,19 @@ rightPanels=[]
 def clear():
   for x in range(len(rightPanels)):
     rightPanels[x].pack_forget()
-
+title=""
+rockDict = {}
+multilist=[]
+param=[]
+solvr=[]
+#gener=[]
+indom=[]
+diffu=[]
+selec=[]
+times=[]
+foft=[]
+coft=[]
+goft=[]
 
 #TITLE
 titleLabel = tk.Label(lcanvas, text="Document Title (max 80 characters):").place(x=10, y=10)
