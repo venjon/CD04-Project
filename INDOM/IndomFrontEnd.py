@@ -1,3 +1,4 @@
+from difflib import Match
 from time import sleep
 import tkinter as tk
 from tkinter import *
@@ -17,9 +18,10 @@ def indomclick():
     #rightPanels.append(indomCanvas)
     indomCanvas.pack()
     #MAT
-    rockoptions = ["placeholder", "chicken"]
-    tk.Label(indomCanvas,text="Material Names - MAT",bg="#ffdfa5").grid(column=0,row=1)
-    tk.Label(indomCanvas,text=rockoptions).grid(column=1,row=1)
+    tk.Label(indomCanvas,text="Material Name(s) - MAT",bg="#ffdfa5").grid(column=0,row=1)
+    global MAT
+    MAT= tk.StringVar()
+    tk.Entry(indomCanvas,textvariable=MAT).grid(column=1,row=1)
     #X
     tk.Label(indomCanvas,text="Primary Variables; quantity depends on EOS (separate by commas) - X",bg="#ffdfa5").grid(column=0,row=2)
     global X
@@ -28,7 +30,7 @@ def indomclick():
     #SAVE
     def indomSave():
         indom = []
-        indom = [rockoptions,X.get()]
+        indom = [MAT.get(),X.get()]
         print(indom)
     global saveindom
     saveindom = tk.Button(indomCanvas,text="Save BEFORE Switching Page", command=indomSave, bg="#00ff00")
