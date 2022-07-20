@@ -31,7 +31,7 @@ def clear():
 
 
 #TITLE
-titleLabel = tk.Label(lcanvas, text="Document Title (max 80 characters):").place(x=10, y=10)
+titleLabel = tk.Label(lcanvas, text="Document Title:").place(x=10, y=10)
 var0 = tk.StringVar()
 titleEntry = tk.Entry(lcanvas, textvariable=var0)
 titleEntry.place(x=207,y=10)
@@ -863,7 +863,10 @@ def addsolvr():
 def addrpcap(elements):
     rpcapline="RPCAP----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
     print (rpcapline)
+    if(len(elements)<17):
+        return
     elements.insert(0,"")
+    
     print (fillstring(elements[17],5),end="")
     print(fillstring("",5), end ="")
     print (fillstring(elements[18],10),end="")
@@ -976,7 +979,7 @@ def checkfull(listname):
 #all the for loops checking if lists are empty
 
 #print title
-print(var0.get())
+print(var0.get()[0:80])
 
 for key in rockDict:
   dummy = rockDict[key]

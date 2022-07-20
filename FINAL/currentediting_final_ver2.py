@@ -31,7 +31,7 @@ def clear():
 
 
 #TITLE
-titleLabel = tk.Label(lcanvas, text="Document Title (max 80 characters):").place(x=10, y=10)
+titleLabel = tk.Label(lcanvas, text="Document Title:").place(x=10, y=10)
 var0 = tk.StringVar()
 titleEntry = tk.Entry(lcanvas, textvariable=var0)
 titleEntry.place(x=207,y=10)
@@ -713,7 +713,7 @@ tk.Button(lcanvas, text="GOFT", command=goftclick).place(x=10,y=490)
 
 root.mainloop()
 
-
+f=open(var0.get()+".txt","w")
 #BACKEND MAIN FUNCTIONS++++++++++++++++++++++++++++
 def fillstring(initial,full_len):
 	charsLeft=full_len - len(initial)
@@ -732,241 +732,248 @@ def separate(bigline, full_len):
 	for i in range(len(bigline)):
 		if(bigline[i]==','):
 			curstring=fillstring(curstring,full_len)
-			print(curstring,end="")
+			f.write(curstring )
 			curnum+=1
 			if(curnum%8==0):
-				print()
+				f.write("\n")
 			curstring=""
 		else:
 			curstring+=bigline[i]
-	print(fillstring(curstring,full_len),end="")
+	f.write(fillstring(curstring,full_len) )
 	curnum+=1
 	if(curnum*8==0):
-		print()
+		f.write("\n")
 def separateselec1(bigline,full_len):
     curnum=0
     curstring=""
     for i in range(len(bigline)):
         if(bigline[i]==','):
             curstring=fillstring(curstring,full_len)
-            print(curstring,end="")
+            f.write(curstring )
             curnum+=1
             if(curnum%16==0):
-                print()
+                f.write("\n")
             curstring=""
         else:
             curstring+=bigline[i]
-    print(fillstring(curstring,full_len),end="")
+    f.write(fillstring(curstring,full_len) )
     curnum+=1
     if(curnum*16==0):
-        print()
+        f.write("\n")
 #BACKEND INDIVIDUAL FUNCTIONS++++++++++++++++++++++++++++
 #VENNELA EDITS
 
 def addrocks(elements):
     rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print (rockline)
-    elements.insert(0,"")
-    for i in range(1,len(elements)):
-        if i==1 or i==2:
-            print(fillstring(elements[i],5), end="")
-        elif i<=9:
-            print(fillstring(elements[i],10), end="")
-        elif i<=10:#
-            print()
-            print(fillstring(elements[i],10), end="")
-        elif i<=16:
-            print(fillstring(elements[i],10), end="")
-        elif i<=17:
-            print()
-            print(fillstring("",5), end="")
-        elif i<=18:
-            print(fillstring("",5), end ="")
-            print(fillstring(elements[i],10), end="")
-        elif i<=24:
-            print(fillstring("",10), end="")
-        elif i<=25:
-            print()
-            print(fillstring("",5), end="")
-        elif(i<=26):
-            print(fillstring("",5), end ="")
-            print(fillstring(elements[i],10), end="")
-        elif(i<=32):
-            print(fillstring(elements[i],10), end="")		
-    print()
+    f.write (rockline+"\n")
+    if(len(elements)==0):
+        pass
+    elif(len(elements)==1):
+        f.write(fillstring(elements[0],5) )
+    else:
+        elements.insert(0,"")
+        for i in range(1,len(elements)):
+            if i==1 or i==2:
+                f.write(fillstring(elements[i],5) )
+            elif i<=9:
+                f.write(fillstring(elements[i],10) )
+            elif i<=10:#
+                f.write("\n")
+                f.write(fillstring(elements[i],10) )
+            elif i<=16:
+                f.write(fillstring(elements[i],10) )
+            elif i<=17:
+                f.write("\n")
+                f.write(fillstring("",5) )
+            elif i<=18:
+                f.write(fillstring("",5) )
+                f.write(fillstring(elements[i],10) )
+            elif i<=24:
+                f.write(fillstring("",10) )
+            elif i<=25:
+                f.write("\n")
+                f.write(fillstring("",5) )
+            elif(i<=26):
+                f.write(fillstring("",5) )
+                f.write(fillstring(elements[i],10) )
+            elif(i<=32):
+                f.write(fillstring(elements[i],10) )		
+    f.write("\n")
 
 
 def addmulti():
     multiline="MULTI----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(multiline)    
-    print(fillstring(NK.get(),5), end="")
-    print(fillstring(NEQ.get(), 5), end="")
-    print(fillstring(NPH.get(), 5), end="")
-    print(fillstring(NB.get(), 5), end="")
-    print(fillstring(NKIN.get(), 5), end="")
-    print()
+    f.write(multiline+"\n")    
+    f.write(fillstring(NK.get(),5) )
+    f.write(fillstring(NEQ.get(), 5) )
+    f.write(fillstring(NPH.get(), 5) )
+    f.write(fillstring(NB.get(), 5) )
+    f.write(fillstring(NKIN.get(), 5) )
+    f.write("\n")
 
 
 def addparam():
     paramline="PARAM----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(paramline)    
-    print(fillstring(NOITE.get(),2), end="")
-    print(fillstring(KDATA.get(),2), end="")
-    print(fillstring(MCYC.get(),4), end="")
-    print(fillstring(MSEC.get(),4), end="")
-    print(fillstring(MCYPR.get(),4 ), end="")
-    print(fillstring(MOPII124.get(),24), end="")
-    print(fillstring("",10), end="")
-    print(fillstring(TEXP.get(), 10), end="")
-    print(fillstring(BE.get(), 10), end="")
-    print(fillstring("",10), end="")
-    print()
-    print(fillstring(TSTART.get(), 10), end="")
-    print(fillstring(TIMAX.get(), 10), end="")
-    print(fillstring(DELTENORNDLT.get(), 10), end="")
-    print(fillstring(DELTMX.get(), 10), end="")
-    print(fillstring(ELST.get(), 5), end="")
-    print(fillstring("", 5), end="")
-    print(fillstring(GF.get(),10), end="")
-    print(fillstring(REDLT.get(), 10), end="")
-    print(fillstring(SCALE.get(), 10), end="")
-    print()
+    f.write(paramline+"\n")    
+    f.write(fillstring(NOITE.get(),2) )
+    f.write(fillstring(KDATA.get(),2) )
+    f.write(fillstring(MCYC.get(),4) )
+    f.write(fillstring(MSEC.get(),4) )
+    f.write(fillstring(MCYPR.get(),4 ) )
+    f.write(fillstring(MOPII124.get(),24) )
+    f.write(fillstring("",10) )
+    f.write(fillstring(TEXP.get(), 10) )
+    f.write(fillstring(BE.get(), 10) )
+    f.write(fillstring("",10) )
+    f.write("\n")
+    f.write(fillstring(TSTART.get(), 10) )
+    f.write(fillstring(TIMAX.get(), 10) )
+    f.write(fillstring(DELTENORNDLT.get(), 10) )
+    f.write(fillstring(DELTMX.get(), 10) )
+    f.write(fillstring(ELST.get(), 5) )
+    f.write(fillstring("", 5) )
+    f.write(fillstring(GF.get(),10) )
+    f.write(fillstring(REDLT.get(), 10) )
+    f.write(fillstring(SCALE.get(), 10) )
+    f.write("\n")
     separate(DLTI.get(),10)
-    print()
-    print(fillstring(RE1.get(), 10), end="")
-    print(fillstring(RE2.get(), 10), end="")
-    print(fillstring(U.get(), 10), end="")
-    print(fillstring(WUP.get(), 10), end="")
-    print(fillstring(WNR.get(), 10), end="")
-    print(fillstring(DFAC.get(), 10), end="")
-    print()
-    print(fillstring(DEP1.get(), 20), end="")
-    print(fillstring(DEP2.get(), 20), end="")
-    print(fillstring(DEP3.get(), 20), end="")
-    print(fillstring(DEP4.get(), 20), end="")
-    print()
+    f.write("\n")
+    f.write(fillstring(RE1.get(), 10) )
+    f.write(fillstring(RE2.get(), 10) )
+    f.write(fillstring(U.get(), 10) )
+    f.write(fillstring(WUP.get(), 10) )
+    f.write(fillstring(WNR.get(), 10) )
+    f.write(fillstring(DFAC.get(), 10) )
+    f.write("\n")
+    f.write(fillstring(DEP1.get(), 20) )
+    f.write(fillstring(DEP2.get(), 20) )
+    f.write(fillstring(DEP3.get(), 20) )
+    f.write(fillstring(DEP4.get(), 20) )
+    f.write("\n")
   
 
 def addsolvr():
     solvrline="SOLVR----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(solvrline) 
-    print(fillstring(MATSLV.get(),1), end="")
-    print(fillstring("",2), end="")
-    print(fillstring(ZPROCS.get(),2), end="")
-    print(fillstring("",3), end="")
-    print(fillstring(OPROCS.get(),2), end="")
-    print(fillstring(RITMAX.get(),10), end="")
-    print(fillstring(CLOSUR.get(),10), end="")
-    print()
+    f.write(solvrline+"\n") 
+    f.write(fillstring(MATSLV.get(),1) )
+    f.write(fillstring("",2) )
+    f.write(fillstring(ZPROCS.get(),2) )
+    f.write(fillstring("",3) )
+    f.write(fillstring(OPROCS.get(),2) )
+    f.write(fillstring(RITMAX.get(),10) )
+    f.write(fillstring(CLOSUR.get(),10) )
+    f.write("\n")
 
 
 def addrpcap(elements):
     rpcapline="RPCAP----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print (rpcapline)
+    f.write (rpcapline+"\n")
     elements.insert(0,"")
-    print (fillstring(elements[17],5),end="")
-    print(fillstring("",5), end ="")
-    print (fillstring(elements[18],10),end="")
-    print (fillstring(elements[19],10),end="")
-    print (fillstring(elements[20],10),end="")
-    print (fillstring(elements[21],10),end="")
-    print (fillstring(elements[22],10),end="")
-    print (fillstring(elements[23],10),end="")
-    print (fillstring(elements[24],10),end="")
-    print()
-    print (fillstring(elements[25],5),end="")
-    print(fillstring("",5), end ="")
-    print (fillstring(elements[26],10),end="")
-    print (fillstring(elements[27],10),end="")
-    print (fillstring(elements[28],10),end="")
-    print (fillstring(elements[29],10),end="")
-    print (fillstring(elements[30],10),end="")
-    print (fillstring(elements[31],10),end="")
-    print (fillstring(elements[32],10),end="")
-    print()
+    if(len(elements)<17):
+        return
+    f.write (fillstring(elements[17],5) )
+    f.write(fillstring("",5) )
+    f.write (fillstring(elements[18],10) )
+    f.write (fillstring(elements[19],10) )
+    f.write (fillstring(elements[20],10) )
+    f.write (fillstring(elements[21],10) )
+    f.write (fillstring(elements[22],10) )
+    f.write (fillstring(elements[23],10) )
+    f.write (fillstring(elements[24],10) )
+    f.write("\n")
+    f.write (fillstring(elements[25],5) )
+    f.write(fillstring("",5) )
+    f.write (fillstring(elements[26],10) )
+    f.write (fillstring(elements[27],10) )
+    f.write (fillstring(elements[28],10) )
+    f.write (fillstring(elements[29],10) )
+    f.write (fillstring(elements[30],10) )
+    f.write (fillstring(elements[31],10) )
+    f.write (fillstring(elements[32],10) )
+    f.write("\n")
 '''  
 #single gener: 
 def addgener2(elements):
     generline="GENER----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(generline)    
-    print(fillstring(elements[0],3), end="")
-    print(fillstring(elements[1],2), end="")
-    print(fillstring(elements[2],3), end="")
-    print(fillstring(elements[3],2), end="")
-    print(fillstring(elements[4],5), end="")
-    print(fillstring(elements[5],5), end="")
-    print(fillstring(elements[6],5), end="")
-    print(fillstring(elements[7],5), end="")
-    print(fillstring("",5), end="")
-    print(fillstring(elements[8],4), end="")
-    print(fillstring(elements[9],1), end="")
-    print(fillstring(elements[10],10), end="")
-    print(fillstring(elements[11],10), end="")
-    print(fillstring(elements[12],10), end="")
-    print()
+    f.write(generline)    
+    f.write(fillstring(elements[0],3) )
+    f.write(fillstring(elements[1],2) )
+    f.write(fillstring(elements[2],3) )
+    f.write(fillstring(elements[3],2) )
+    f.write(fillstring(elements[4],5) )
+    f.write(fillstring(elements[5],5) )
+    f.write(fillstring(elements[6],5) )
+    f.write(fillstring(elements[7],5) )
+    f.write(fillstring("",5) )
+    f.write(fillstring(elements[8],4) )
+    f.write(fillstring(elements[9],1) )
+    f.write(fillstring(elements[10],10) )
+    f.write(fillstring(elements[11],10) )
+    f.write(fillstring(elements[12],10) )
+    f.write("\n")
     separate(elements[13],10)
-    print()
+    f.write("\n")
     separate(elements[14],10)
-    print()
+    f.write("\n")
     separate(elements[15],10)
-    print()
+    f.write("\n")
 '''
 def addindom():
     indomline="INDOM----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(indomline)    
-    print(fillstring(MAT1.get(),5), end="")
-    print()
+    f.write(indomline +"\n")    
+    f.write(fillstring(MAT1.get(),5) )
+    f.write("\n")
     separate(X.get(),20)
-    print()
+    f.write("\n")
 
 
 def addDiffu():
     diffuline="DIFFU----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(diffuline)    
+    f.write(diffuline+"\n")    
     separate(FDDIAGI1.get(),10)
     separate(FDDIAGI2.get(),10)
-    print()
+    f.write("\n")
 
 def addselec():
     selecline="SELEC----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(selecline)    
+    f.write(selecline+"\n")    
     separateselec1(IEI.get(),5)
-    print()
+    f.write("\n")
     separate(FEI.get(),10)
-    print()
-    print()
+    f.write("\n")
+    f.write("\n")
   
 def addTimes():
     Timesline="TIMES----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(Timesline)    
-    print(fillstring(ITI.get(),5), end="")
-    print(fillstring(ITE.get(),5), end="")
-    print(fillstring(DELAF.get(),10), end="")
-    print(fillstring(TINTER.get(),10), end="")
-    print()
+    f.write(Timesline+"\n")    
+    f.write(fillstring(ITI.get(),5) )
+    f.write(fillstring(ITE.get(),5) )
+    f.write(fillstring(DELAF.get(),10) )
+    f.write(fillstring(TINTER.get(),10) )
+    f.write("\n")
     separate(TISI.get(),10)
-    #print TIS(1)-TIS(ITI)
+    #f.write TIS(1)-TIS(ITI)
 
-    print()
+    f.write("\n")
     
 def addFOFT():
     FOFTline="FOFT-----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(FOFTline)    
-    print(fillstring(EOFT.get(),5), end="")
-    print()
+    f.write(FOFTline+"\n")    
+    f.write(fillstring(EOFT.get(),5) )
+    f.write("\n")
 
 
 def addCOFT():
     COFTline="COFT-----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(COFTline)    
-    print(fillstring(ECOFT.get(),10), end="")
-    print()
+    f.write(COFTline+"\n")    
+    f.write(fillstring(ECOFT.get(),10) )
+    f.write("\n")
 
 def addGOFT():
     GOFTline="GOFT-----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(GOFTline)    
-    print(fillstring(EGOFT.get(),5), end="")
-    print()
+    f.write(GOFTline+"\n")    
+    f.write(fillstring(EGOFT.get(),5) )
+    f.write("\n")
 def checkfull(listname):
   for x in range(len(listname)):
     if listname[x]!="":
@@ -975,8 +982,9 @@ def checkfull(listname):
 #BACKEND RUNS------ONLY PLACE WHERE PRINTING SHOULD HAPPEN
 #all the for loops checking if lists are empty
 
-#print title
-print(var0.get())
+#f.write title
+
+f.write(var0.get()[0:80] + "\n")
 
 for key in rockDict:
   dummy = rockDict[key]
@@ -990,10 +998,13 @@ if(checkfull(param)):
   
 if(checkfull(solvr)):
   addsolvr()
-  
-for key in rockDict:
-  dummy = rockDict[key]
-  addrpcap(dummy)
+
+if(bool(rockDict)==False):
+    pass
+else:
+    for key in rockDict:
+        dummy = rockDict[key]
+        addrpcap(dummy)
 
 #GENER
 
@@ -1019,6 +1030,8 @@ if(checkfull(goft)):
   addGOFT()
   
 
-#print ending line
-print("ENDCY----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8")
+#f.write ending line
+f.write("ENDCY----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8")
 #PROGRAM OVER---------------------
+
+f.close()
