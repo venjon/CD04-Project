@@ -45,10 +45,12 @@ def multiclick():
     def multiSave():
         multi = []
         multi = [NK.get(),NEQ.get(),NPH.get(),NB.get(),NKIN.get()]
+        multilist=multi
         print(multi)
     global savemulti
     savemulti = tk.Button(multiCanvas,text="Save BEFORE Switching Page", command=multiSave, bg="#00ff00")
     savemulti.grid(column=0,row=0,columnspan=2)
 tk.Button(lcanvas, text="MULTI", command=multiclick).place(x=10,y=90)
+multilist=[]
 
 root.mainloop()
