@@ -9,12 +9,12 @@ lcanvas.pack(side="left")
 rcanvas = tk.Canvas(root, width=460, height=800, bg="white",)
 rcanvas.pack(side="right")
 
+#FOFT
 def foftclick():
     global foftCanvas
-    #for x in range():
-        #rightPanels[x].pack_forget()
+    clear()
     foftCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#96fff0")
-    #rightPanels.append(foftCanvas)
+    rightPanels.append(foftCanvas)
     foftCanvas.pack()
     #EOFT
     tk.Label(foftCanvas,bg="#96fff0",text="Element Name - EOFT").grid(column=0,row=1)

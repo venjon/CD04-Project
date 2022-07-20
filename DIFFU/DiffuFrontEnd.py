@@ -9,12 +9,12 @@ lcanvas.pack(side="left")
 rcanvas = tk.Canvas(root, width=400, height=800, bg="white",)
 rcanvas.pack(side="right")
 
+#DIFFU
 def diffuclick():
     global diffuCanvas
-    #for x in range():
-        #rightPanels[x].pack_forget()
+    clear()
     diffuCanvas = tk.Canvas(rcanvas,width=400,height=800,bg="#c5ffff")
-    #rightPanels.append(diffuCanvas)
+    rightPanels.append(diffuCanvas)
     diffuCanvas.pack()
     #FDDIAG(I1)
     tk.Label(diffuCanvas,text="""Diffusion Coefficients for Mass Component 1

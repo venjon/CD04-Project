@@ -9,6 +9,7 @@ lcanvas.pack(side="left")
 rcanvas = tk.Canvas(root, width=460, height=800, bg="white",)
 rcanvas.pack(side="right")
 
+#MULTI
 def multiclick():
     global multiCanvas
     #for x in range():

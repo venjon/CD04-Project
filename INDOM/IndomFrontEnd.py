@@ -10,18 +10,18 @@ lcanvas.pack(side="left")
 rcanvas = tk.Canvas(root, width=400, height=800, bg="white",)
 rcanvas.pack(side="right")
 
+#INDOM
 def indomclick():
     global indomCanvas
-    #for x in range():
-        #rightPanels[x].pack_forget()
+    clear()
     indomCanvas = tk.Canvas(rcanvas,width=400,height=800,bg="#ffdfa5")
-    #rightPanels.append(indomCanvas)
+    rightPanels.append(indomCanvas)
     indomCanvas.pack()
-    #MAT
-    tk.Label(indomCanvas,text="Material Name(s) - MAT",bg="#ffdfa5").grid(column=0,row=1)
-    global MAT
-    MAT= tk.StringVar()
-    tk.Entry(indomCanvas,textvariable=MAT).grid(column=1,row=1)
+    #MAT1
+    tk.Label(indomCanvas,text="Material Name(s) - MAT1",bg="#ffdfa5").grid(column=0,row=1)
+    global MAT1
+    MAT1= tk.StringVar()
+    tk.Entry(indomCanvas,textvariable=MAT1).grid(column=1,row=1)
     #X
     tk.Label(indomCanvas,text="Primary Variables; quantity depends on EOS (separate by commas) - X",bg="#ffdfa5").grid(column=0,row=2)
     global X
@@ -30,7 +30,7 @@ def indomclick():
     #SAVE
     def indomSave():
         indom = []
-        indom = [MAT.get(),X.get()]
+        indom = [MAT1.get(),X.get()]
         print(indom)
     global saveindom
     saveindom = tk.Button(indomCanvas,text="Save BEFORE Switching Page", command=indomSave, bg="#00ff00")

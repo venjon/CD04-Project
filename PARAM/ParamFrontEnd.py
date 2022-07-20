@@ -11,12 +11,12 @@ lcanvas.pack(side="left")
 rcanvas = tk.Canvas(root, width=460, height=800, bg="white",)
 rcanvas.pack(side="right")
 
+#PARAM
 def paramclick():
     global paramCanvas
-    #for x in range():
-        #rightPanels[x].pack_forget()
+    clear()
     paramCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffffc5")
-    #rightPanels.append(paramCanvas)
+    rightPanels.append(paramCanvas)
     paramCanvas.pack()
     #NOITE
     tk.Label(paramCanvas,text="Max Newtonian Iterations per Time Step - NOITE",bg="#ffffc5").grid(column=0,row=1)
