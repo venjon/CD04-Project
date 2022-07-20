@@ -29,6 +29,7 @@ def indomclick():
     tk.Entry(indomCanvas,textvariable=X).grid(column=1,row=2)
     #SAVE
     def indomSave():
+        global indom
         indom = []
         indom = [MAT.get(),X.get()]
         print(indom)
@@ -36,7 +37,6 @@ def indomclick():
     saveindom = tk.Button(indomCanvas,text="Save BEFORE Switching Page", command=indomSave, bg="#00ff00")
     saveindom.grid(column=0,row=0,columnspan=2)
 tk.Button(lcanvas, text="INDOM", command=indomclick).place(x=10,y=250)
-
 root.mainloop()
 
 #BACKEND FUNCTIONS++++++++++++++++++++++++++++
@@ -80,4 +80,7 @@ def addindom():
     print()
 
 #print variables
-addindom()
+for x in range(len(indom)):
+    if indom[x]!="":
+        addindom()
+        break
