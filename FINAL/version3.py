@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk, messagebox
 import os
+from tkinter.font import BOLD
 root = tk.Tk()
 #FRONTEND 
 rockDict = {}
@@ -30,6 +31,7 @@ def clear():
   for x in range(len(rightPanels)):
     rightPanels[x].pack_forget()
 
+tk.Button(lcanvas, text="Download and Exit", command=root.destroy, bg="red",font=BOLD,width=35).place(x=10,y=765)
 
 #TITLE
 titleLabel = tk.Label(lcanvas, text="Document Title:").place(x=10, y=10)
@@ -1436,3 +1438,6 @@ f.write("ENDCY----1----*----2----*----3----*----4----*----5----*----6----*----7-
 #PROGRAM OVER---------------------
 
 f.close()
+
+f=open(var0.get()+".txt","r")
+print(f.read())
