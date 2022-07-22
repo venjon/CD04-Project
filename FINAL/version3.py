@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk, messagebox
 import os
+import webbrowser
 from tkinter.font import BOLD
 root = tk.Tk()
 #FRONTEND 
@@ -1438,6 +1439,4 @@ f.write("ENDCY----1----*----2----*----3----*----4----*----5----*----6----*----7-
 #PROGRAM OVER---------------------
 
 f.close()
-
-f=open(var0.get()+".txt","r")
-print(f.read())
+webbrowser.open(var0.get()+".txt")
