@@ -149,30 +149,30 @@ def createRockRight():
     CP2 = tk.StringVar()
     tk.Entry(rockoptionscanvas[rc],textvariable=CP2).grid(column=1,row=28)
     #CP(3)
-    tk.Label(rockoptionscanvas[rc],text=" - CP(3)").grid(column=0,row=28)
+    tk.Label(rockoptionscanvas[rc],text=" - CP(3)").grid(column=0,row=29)
     global CP3
     CP3 = tk.StringVar()
-    tk.Entry(rockoptionscanvas[rc],textvariable=CP3).grid(column=1,row=28)
+    tk.Entry(rockoptionscanvas[rc],textvariable=CP3).grid(column=1,row=29)
     #CP(4)
-    tk.Label(rockoptionscanvas[rc],text=" - CP(4)").grid(column=0,row=29)
+    tk.Label(rockoptionscanvas[rc],text=" - CP(4)").grid(column=0,row=30)
     global CP4
     CP4 = tk.StringVar()
-    tk.Entry(rockoptionscanvas[rc],textvariable=CP4).grid(column=1,row=29)
+    tk.Entry(rockoptionscanvas[rc],textvariable=CP4).grid(column=1,row=30)
     #CP(5)
-    tk.Label(rockoptionscanvas[rc],text=" - CP(5)").grid(column=0,row=30)
+    tk.Label(rockoptionscanvas[rc],text=" - CP(5)").grid(column=0,row=31)
     global CP5
     CP5 = tk.StringVar()
-    tk.Entry(rockoptionscanvas[rc],textvariable=CP5).grid(column=1,row=30)
+    tk.Entry(rockoptionscanvas[rc],textvariable=CP5).grid(column=1,row=31)
     #CP(6)
-    tk.Label(rockoptionscanvas[rc],text=" - CP(6)").grid(column=0,row=31)
+    tk.Label(rockoptionscanvas[rc],text=" - CP(6)").grid(column=0,row=32)
     global CP6
     CP6 = tk.StringVar()
-    tk.Entry(rockoptionscanvas[rc],textvariable=CP6).grid(column=1,row=31)
+    tk.Entry(rockoptionscanvas[rc],textvariable=CP6).grid(column=1,row=32)
     #CP(7)
-    tk.Label(rockoptionscanvas[rc],text=" - CP(7)").grid(column=0,row=32)
+    tk.Label(rockoptionscanvas[rc],text=" - CP(7)").grid(column=0,row=33)
     global CP7
     CP7= tk.StringVar()
-    tk.Entry(rockoptionscanvas[rc],textvariable=CP7).grid(column=1,row=32)
+    tk.Entry(rockoptionscanvas[rc],textvariable=CP7).grid(column=1,row=33)
     #SAVE
     def rockSave():
         rockDict[rockoptions[rc]] = [TITLE, MAT,NAD.get(),DROK.get(), POR.get(), PER1.get(), PER2.get(), PER3.get(), CWET.get(), SPHT.get(), COM.get(), EXPAN.get(), CDRY.get(), TORTX.get(), GK.get(), XKD3.get(), XKD4.get(), IRP.get(), RP1.get(), RP2.get(), RP3.get(), RP4.get(), RP5.get(), RP6.get(), RP7.get(), ICP.get(), CP1.get(), CP2.get(), CP3.get(), CP4.get(), CP5.get(), CP6.get(), CP7.get()]
@@ -269,40 +269,49 @@ def separate(bigline, full_len):
 #BACKEND FUNCTIONS++++++++++++++++++++++++++++
 
 rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-
+print (rockline)
 #rock_elements = [TITLE, MAT, NAD.get(), DROK.get(), POR.get(), PER1.get(), PER2.get(), PER3.get(), CWET.get(), SPHT.get(),COM.get(), EXPAN.get(), CDRY.get(), TORTX.get(), GK.get(), XKD3.get(), XKD3.get(), XKD4.get(), IRP.get(), RP1.get(), RP2.get(),RP3.get(), RP4.get(), RP5.get(), RP6.get(), RP7.get(), ICP.get(), CP1.get(), CP2.get(), CP3.get(), CP4.get(), CP5.get(), CP6.get(), CP7.get()]
 
 def addrocks(elements):
-    rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print (rockline)
-    for i in range(1,len(elements)):
-        if i==1 or i==2:
-            print(fillstring(elements[i],5), end="")
-        elif i<=9:
-            print(fillstring(elements[i],10), end="")
-        elif i<=10:#
-            print()
-            print(fillstring(elements[i],10), end="")
-        elif i<=16:
-            print(fillstring(elements[i],10), end="")
-        elif i<=17:
-            print()
-            print(fillstring("",5), end="")
-        elif i<=18:
-            print(fillstring("",5), end ="")
-            print(fillstring(elements[i],10), end="")
-        elif i<=24:
-            print(fillstring("",10), end="")
-        elif i<=25:
-            print()
-            print(fillstring("",5), end="")
-        elif(i<=26):
-            print(fillstring("",5), end ="")
-            print(fillstring(elements[i],10), end="")
-        elif(i<=32):
-            print(fillstring(elements[i],10), end="")		
+    #rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
+    print(fillstring(elements[1],5),end="")
+    print(fillstring(elements[2],5),end="")
+    print(fillstring(elements[3],10),end="")
+    print(fillstring(elements[4],10),end="")
+    print(fillstring(elements[5],10),end="")
+    print(fillstring(elements[6],10),end="")
+    print(fillstring(elements[7],10),end="")
+    print(fillstring(elements[8],10),end="")
+    print(fillstring(elements[9],10),end="")
     print()
-
+    print(fillstring(elements[10],10),end="")
+    print(fillstring(elements[11],10),end="")
+    print(fillstring(elements[12],10),end="")
+    print(fillstring(elements[13],10),end="")
+    print(fillstring(elements[14],10),end="")
+    print(fillstring(elements[15],10),end="")
+    print(fillstring(elements[16],10),end="")
+    print()
+    print(fillstring(elements[17],5),end="")
+    print(fillstring("",5),end="")
+    print(fillstring(elements[18],10),end="")
+    print(fillstring(elements[19],10),end="")
+    print(fillstring(elements[20],10),end="")
+    print(fillstring(elements[21],10),end="")
+    print(fillstring(elements[22],10),end="")
+    print(fillstring(elements[23],10),end="")
+    print(fillstring(elements[24],10),end="")
+    print()
+    print(fillstring(elements[25],5),end="")
+    print(fillstring("",5),end="")
+    print(fillstring(elements[26],10),end="")
+    print(fillstring(elements[27],10),end="")
+    print(fillstring(elements[28],10),end="")
+    print(fillstring(elements[29],10),end="")
+    print(fillstring(elements[30],10),end="")
+    print(fillstring(elements[31],10),end="")
+    print(fillstring(elements[32],10),end="")
+    print()
 
 print(var0.get())
 #print(rockline)

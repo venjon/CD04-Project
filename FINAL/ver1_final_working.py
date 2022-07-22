@@ -1,5 +1,6 @@
 #This is the final merge of all programs
 #RUN TO LAUNCH FINAL APP 
+from operator import truediv
 from time import sleep
 import tkinter as tk
 from tkinter import *
@@ -1123,24 +1124,108 @@ def addTimes():
 
     print()
     
+def checkexists(examplestring):
+    if (examplestring=="" or examplestring=="separate by commas"):
+        return False
+    return True
+    
 def addFOFT():
     FOFTline="FOFT-----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(FOFTline)    
-    print(fillstring(EOFT.get(),5), end="")
-    print()
+    print(FOFTline) 
+    if(checkexists(EOFT1.get())):   
+        print(fillstring(EOFT1.get(),5))
+    if(checkexists(EOFT2.get())):
+        print(fillstring(EOFT2.get(),5))
+    if(checkexists(EOFT3.get())):
+        print(fillstring(EOFT3.get(),5))
+    if(checkexists(EOFT4.get())):
+        print(fillstring(EOFT4.get(),5))
+    if(checkexists(EOFT5.get())):
+        print(fillstring(EOFT5.get(),5))
+    if(checkexists(EOFT6.get())):
+        print(fillstring(EOFT6.get(),5))
+    if(checkexists(EOFT7.get())):
+        print(fillstring(EOFT7.get(),5))
+    if(checkexists(EOFT8.get())):
+        print(fillstring(EOFT8.get(),5))
+    if(checkexists(EOFT9.get())):
+        curnum=0
+        curstring=""
+        for i in range(len(EOFT9.get())):
+            if(EOFT9.get()[i]==','):
+                curstring=fillstring(curstring,5)
+                print(curstring)
+                curstring=""
+            else:
+                curstring+=EOFT9.get()[i]
+        print(fillstring(curstring,5))
+    
 
 
 def addCOFT():
     COFTline="COFT-----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
     print(COFTline)    
-    print(fillstring(ECOFT.get(),10), end="")
-    print()
+    if(checkexists(ECOFT1.get())): 
+        print(fillstring(ECOFT1.get(),5))
+    if(checkexists(ECOFT2.get())):
+        print(fillstring(ECOFT2.get(),5))
+    if(checkexists(ECOFT3.get())):
+        print(fillstring(ECOFT3.get(),5))
+    if(checkexists(ECOFT4.get())):
+        print(fillstring(ECOFT4.get(),5))
+    if(checkexists(ECOFT5.get())):
+        print(fillstring(ECOFT5.get(),5))
+    if(checkexists(ECOFT6.get())):
+        print(fillstring(ECOFT6.get(),5))
+    if(checkexists(ECOFT7.get())):
+        print(fillstring(ECOFT7.get(),5))
+    if(checkexists(ECOFT8.get())):
+        print(fillstring(ECOFT8.get(),5))
+    if(checkexists(ECOFT9.get())):
+        curnum=0
+        curstring=""
+        for i in range(0,len(ECOFT9.get())):
+            if(ECOFT9.get()[i]==','):
+                curstring=fillstring(curstring,5)
+                print(curstring)
+                curstring=""
+            else:
+                curstring+=ECOFT9.get()[i]
+        print(fillstring(curstring,5))
+    
 
 def addGOFT():
     GOFTline="GOFT-----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
     print(GOFTline)    
-    print(fillstring(EGOFT.get(),5), end="")
-    print()
+    if(checkexists(EGOFT1.get())): 
+        print(fillstring(EGOFT1.get(),5))
+    if(checkexists(EGOFT2.get())):
+        print(fillstring(EGOFT2.get(),5))
+    if(checkexists(EGOFT3.get())):
+        print(fillstring(EGOFT3.get(),5))
+    if(checkexists(EGOFT4.get())):
+        print(fillstring(EGOFT4.get(),5))
+    if(checkexists(EGOFT5.get())):
+        print(fillstring(EGOFT5.get(),5))
+    if(checkexists(EGOFT6.get())):
+        print(fillstring(EGOFT6.get(),5))
+    if(checkexists(EGOFT7.get())):
+        print(fillstring(EGOFT7.get(),5))
+    if(checkexists(EGOFT8.get())):
+        print(fillstring(EGOFT8.get(),5))
+    if(checkexists(EGOFT9.get())):
+        curnum=0
+        curstring=""
+        for i in range(0,len(EGOFT9.get())):
+            if(EGOFT9.get()[i]==','):
+                curstring=fillstring(curstring,5)
+                print(curstring)
+                curstring=""
+            else:
+                curstring+=EGOFT9.get()[i]
+        print(fillstring(curstring,5))
+    
+    
 def checkfull(listname):
   for x in range(len(listname)):
     if listname[x]!="":

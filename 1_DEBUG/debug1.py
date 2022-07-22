@@ -3,7 +3,57 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 import os
+'''
+    for i in range(1,len(elements)):
+        if i==1 or i==2:
+            print(fillstring(elements[i],5), end="")
+        elif i<=9:
+            print("*****************")
+            print(fillstring(elements[i],10), end="")
+        elif i<=10:
+            print()
+            print(fillstring(elements[i],10), end="")
+        elif i<=16:
+            print(fillstring(elements[i],10), end="")
+        elif i<=17:
+            print()
+            print(fillstring("",5), end="")
+        elif i<=18:
+            print(fillstring("",5), end ="")
+            print(fillstring(elements[i],10), end="")
+        elif i<=24:
+            print(fillstring("",10), end="")
+        elif i<=25:
+            print()
+            print(fillstring("",5), end="")
+        elif(i<=26):
+            print(fillstring("",5), end ="")
+            print(fillstring(elements[i],10), end="")
+        elif(i<=32):
+            print(fillstring(elements[i],10), end="")		
+    print()
+'''
 
+'''f.write (fillstring(IRP.get(),5) )
+    f.write(fillstring("",5) )
+    f.write (fillstring(RP1.get(),10) )
+    f.write (fillstring(RP2.get(),10) )
+    f.write (fillstring(RP3.get(),10) )
+    f.write (fillstring(RP4.get(),10) )
+    f.write (fillstring(RP5.get(),10) )
+    f.write (fillstring(RP6.get(),10) )
+    f.write (fillstring(RP7.get(),10) )
+    f.write("\n")
+    f.write (fillstring(ICP.get(),5) )
+    f.write(fillstring("",5) )
+    f.write (fillstring(CP1.get(),10) )
+    f.write (fillstring(CP2.get(),10) )
+    f.write (fillstring(CP3.get(),10) )
+    f.write (fillstring(CP4.get(),10) )
+    f.write (fillstring(CP5.get(),10) )
+    f.write (fillstring(CP6.get(),10) )
+    f.write (fillstring(CP7.get(),10) )
+    f.write("\n")'''
 
 root = tk.Tk()
 lcanvas = tk.Canvas(root, width=400, height=800, bg="#f0f0f0")
