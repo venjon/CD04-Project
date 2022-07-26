@@ -570,102 +570,138 @@ def solvrclick():
 tk.Button(lcanvas, text="SOLVR", command=solvrclick).place(x=10,y=170)
 
 #GENER
-def generclick():
-    global generCanvas
+def GenerOptionMenu_SelectionEvent(event):
+    global Generchoice
+    Generchoice = var9.get()
     clear()
-    generCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffc5ff")
-    rightPanels.append(generCanvas)
-    generCanvas.pack()
-    #EL
-    tk.Label(generCanvas,text="Element Code Name w/ source (Part 1) - EL",bg="#ffc5ff").grid(column=0,row=1)
-    global EL
-    EL = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=EL).grid(column=1,row=1)
-    #NE
-    tk.Label(generCanvas,text="Element Code Name w/ source (Part 2) - NE",bg="#ffc5ff").grid(column=0,row=2)
-    global NE
-    NE= tk.StringVar()
-    tk.Entry(generCanvas,textvariable=NE).grid(column=1,row=2)
-    #SL
-    tk.Label(generCanvas,text="Sink Code Name (Part 1) - SL",bg="#ffc5ff").grid(column=0,row=3)
-    global SL
-    SL = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=SL).grid(column=1,row=3)
-    #NS
-    tk.Label(generCanvas,text="Sink Code Name (Part 2) - NS",bg="#ffc5ff").grid(column=0,row=4)
-    global NS
-    NS = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=NS).grid(column=1,row=4)
-    #NSEQ
-    tk.Label(generCanvas,text="Additional Sink Quantity w/ Equal Injection Rate - NSEQ",bg="#ffc5ff").grid(column=0,row=5)
-    global NSEQ
-    NSEQ = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=NSEQ).grid(column=1,row=5)
-    #NADD
-    tk.Label(generCanvas,text="Increment Between Code Numbers of Successive Elements w/ Same Sink - NADD",bg="#ffc5ff").grid(column=0,row=6)
-    global NADD
-    NADD = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=NADD).grid(column=1,row=6)
-    #NADS
-    tk.Label(generCanvas,text="Increment Between Code Numbers of Successive Sinks- NADS",bg="#ffc5ff").grid(column=0,row=7)
-    global NADS
-    NADS = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=NADS).grid(column=1,row=7)
-    #LTAB
-    tk.Label(generCanvas,text="No. of Pts in Generation Table / Time. 0 or 1 = constant rate - LTAB",bg="#ffc5ff").grid(column=0,row=8)
-    global LTAB
-    LTAB = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=LTAB).grid(column=1,row=8)
-    #TYPE
-    tk.Label(generCanvas,text="Fluid/Heat Production Options - TYPE",bg="#ffc5ff").grid(column=0,row=9)
-    global TYPE
-    TYPE= tk.StringVar()
-    tk.Entry(generCanvas,textvariable=TYPE).grid(column=1,row=9)
-    #ITAB
-    tk.Label(generCanvas,text="Specific Enthalpies - ITAB",bg="#ffc5ff").grid(column=0,row=10)
-    global ITAB
-    ITAB= tk.StringVar()
-    tk.Entry(generCanvas,textvariable=ITAB).grid(column=1,row=10)
-    #GX
-    tk.Label(generCanvas,text="Constant Generation Rate, - for production, + for injection - GX",bg="#ffc5ff").grid(column=0,row=11)
-    global GX
-    GX = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=GX).grid(column=1,row=11)
-    #EX
-    tk.Label(generCanvas,text="Fixed Specific Enthalpy of Fluid for Injection (J/kg) - EX",bg="#ffc5ff").grid(column=0,row=12)
-    global EX
-    EX = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=EX).grid(column=1,row=12)
-    #HG
-    tk.Label(generCanvas,text="Layer Thickness (m) - HG",bg="#ffc5ff").grid(column=0,row=13)
-    global HG
-    HG = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=HG).grid(column=1,row=13)
-    #F1
-    tk.Label(generCanvas,text="Generation Times (separate by commas) - F1 - 1 to LTAB",bg="#ffc5ff").grid(column=0,row=14)
-    global F1
-    F1 = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=F1).grid(column=1,row=14)
-    #F2
-    tk.Label(generCanvas,text="Generation Rates (separate by commas) - F2 - 1 to LTAB",bg="#ffc5ff").grid(column=0,row=15)
-    global F2
-    F2 = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=F2).grid(column=1,row=15)
-    #F3
-    tk.Label(generCanvas,text="Specific Enthalpy of Fluid (separate by commas) - F3 - 1 to LTAB",bg="#ffc5ff").grid(column=0,row=16)
-    global F3
-    F3 = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=F3).grid(column=1,row=16)
-    #SAVE
-    def generSave():
-        global gener
-        gener = []
-        gener = [EL.get(),NE.get(),SL.get(),NS.get(),NSEQ.get(),NADD.get(),NADS.get(),LTAB.get(),TYPE.get(),ITAB.get(),GX.get(),EX.get(),EX.get(),HG.get(),F1.get(),F2.get(),F3.get()]
-        print(gener)
-    global savegener
-    savegener = tk.Button(generCanvas,text="Save BEFORE Switching Page", command=generSave, bg="#00ff00")
-    savegener.grid(column=0,row=0,columnspan=2)
-tk.Button(lcanvas, text="GENER", command=generclick).place(x=10,y=210)
+    if Generchoice == "Add Generator":
+        gc=-1
+        newGen = tk.Toplevel(root)
+        newGen.geometry("200x100")
+        tk.Label(newGen,text="""Enter a name for your new sample
+        (preferably 5 characters)
+        DO NOT INCLUDE SPACES""").pack()
+        global newGenName
+        newGenName = tk.StringVar()
+        tk.Entry(newGen, width=30, textvariable=newGenName).pack()
+        def var3():
+            generoptions.append(newGenName.get())
+            newGen.destroy()
+            generList = tk.OptionMenu(lcanvas, var9, *(generoptions), command = GenerOptionMenu_SelectionEvent).place(x=10,y=210)
+            newgenercanvas = tk.Canvas(rcanvas, width=460, height=800, bg="#c1e2fe")
+            generoptionscanvas.append(newgenercanvas)
+            rightPanels.append(newgenercanvas)
+            generDict[generoptions[gc]] = []
+            #EL
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Name of Elerial - EL").grid(column=0,row=1)
+            global EL
+            EL = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=EL).grid(column=1,row=1)
+            #NE
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text=" - NE").grid(column=0,row=2)
+            global NE
+            NE = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=NE).grid(column=1,row=2)
+            #SL
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Gener Grain Density (kg/m^3) - SL").grid(column=0,row=3)
+            global SL
+            SL = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=SL).grid(column=1,row=3)
+            #NS
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Porosity (if not included in INCON) - NS").grid(column=0,row=4)
+            global NS
+            NS = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=NS).grid(column=1,row=4)
+            #NSEQ
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 1 - NSEQ").grid(column=0,row=5)
+            global NSEQ
+            NSEQ = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=NSEQ).grid(column=1,row=5)
+            #PER(2)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 2 - PER(2)").grid(column=0,row=6)
+            global NADD
+            NADD = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=NADD).grid(column=1,row=6)
+            #PER(3)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 3 - PER(3)").grid(column=0,row=7)
+            global NADS
+            NADS = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=NADS).grid(column=1,row=7)
+            #LTAB
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Forgenion Heat Conductivity in Liquid (W/m°C)- LTAB").grid(column=0,row=8)
+            global LTAB
+            LTAB = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=LTAB).grid(column=1,row=8)
+            #TYPE
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Gener Grain Specific Heat (J/kg°C) - TYPE").grid(column=0,row=9)
+            global TYPE
+            TYPE = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=TYPE).grid(column=1,row=9)
+            #ITAB
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Pore Compressibility - ITAB").grid(column=0,row=10)
+            global ITAB
+            ITAB = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=ITAB).grid(column=1,row=10)
+            #GX
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Pore Expansivity - GX").grid(column=0,row=11)
+            global GX
+            GX = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=GX).grid(column=1,row=11)
+            #EX
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Forgenion Heat Conductivity w/o Liquid (W/m°C) - EX").grid(column=0,row=12)
+            global EX
+            EX = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=EX).grid(column=1,row=12)
+            #HG
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Tortuosity Factor - HG").grid(column=0,row=13)
+            global HG
+            HG = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=HG).grid(column=1,row=13)
+            #F1
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Klinkenberg Parameter B [k*(1+b/P)] - F1").grid(column=0,row=14)
+            global F1
+            F1 = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=F1).grid(column=1,row=14)
+            #F2
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Distribution Coefficient of Parent Radionuclide - F2").grid(column=0,row=15)
+            global F2
+            F2 = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=F2).grid(column=1,row=15)
+            #F3
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Distribution Coefficient of Daughter Radionuclide - F3").grid(column=0,row=16)
+            global F3
+            F3 = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=F3).grid(column=1,row=16)
+            #SAVE
+            def genersave():
+                generDict[generoptions[gc]] = []
+                generDict[generoptions[gc]] = [EL.get,NE.get(),SL.get(), NS.get(), NSEQ.get(), NADD.get(), NADS.get(), LTAB.get(), TYPE.get(), ITAB.get(), GX.get(), EX.get(), HG.get(), F1.get(), F2.get(), F3.get()]
+                print(generDict)
+            global savegener
+            savegener = tk.Button(generoptionscanvas[gc],text="Click to Save When FINISHED (do not return after switching page)", command=genersave, bg="#00ff00")
+            savegener.grid(column=0,row=0,columnspan=2)
+        tk.Button(newGen, text="Enter", command=lambda:var3()).pack()
+    else:
+        gc = generoptions.index(Generchoice)
+        for x in range(1, len(generoptionscanvas)):
+            generoptionscanvas[x].pack_forget()
+        savegener.grid_forget()
+        def genersave2():
+            print(gc)
+            generDict[generoptions[gc]] = [EL.get(),NE.get(),SL.get(), NS.get(), NSEQ.get(), NADD.get(), NADS.get(), LTAB.get(), TYPE.get(), ITAB.get(), GX.get(), EX.get(), HG.get(), F1.get(), F2.get(), F3.get()]
+            print(generDict)
+        savegener.config(command=genersave2)
+        savegener.grid(column=0,row=0,columnspan=2)
+        generoptionscanvas[gc].pack()
+        print(gc)
+
+var9 = tk.StringVar()
+var9.set("Generators")
+generoptions = ["Add Generator"]
+generoptionscanvas = ["placeholder"]
+generList = tk.OptionMenu(lcanvas, var9, *(generoptions), command = GenerOptionMenu_SelectionEvent)
+generDict = {}
+generList.place(x=10,y=210)
 
 #INDOM
 def indomclick():
@@ -980,17 +1016,6 @@ def fillstring(initial,full_len):
 			finalstring+=" "
 		finalstring += initial
 	return finalstring
-def REVfillstring(initial,full_len):
-    charsLeft = full_len - len(initial)
-    finalstring=""
-    if charsLeft <0:
-        for i in range(full_len):
-            finalstring+=initial[i]
-    else:
-        finalstring+=initial
-        for i in range(charsLeft):
-            finalstring+=" "
-    return finalstring
 def separate(bigline, full_len):
 	curnum=0
 	curstring=""
@@ -1058,7 +1083,6 @@ def addrocks(elements):
         f.write(fillstring(elements[15],10))
         f.write(fillstring(elements[16],10))
         f.write("\n")
-        '''
         f.write(fillstring(elements[17],5))
         f.write(fillstring("",5))
         f.write(fillstring(elements[18],10))
@@ -1079,7 +1103,7 @@ def addrocks(elements):
         f.write(fillstring(elements[31],10))
         f.write(fillstring(elements[32],10))
         f.write("\n")
-        '''
+
 
 def addmulti():
     multiline="MULTI----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
@@ -1151,7 +1175,7 @@ def addsolvr():
     f.write(fillstring(ZPROCS.get(),2) )
     f.write(fillstring("",3) )
     f.write(fillstring(OPROCS.get(),2) )
-    f.write(fillstring(RITMAX.get(),10) )#issue here why is 0.8 in the random middle 
+    f.write(fillstring(RITMAX.get(),10) )
     f.write(fillstring(CLOSUR.get(),10) )
     f.write("\n")
 
@@ -1164,13 +1188,13 @@ def addrpcap(elements):
         return
     f.write (fillstring(elements[17],5) )
     f.write(fillstring("",5) )
-    f.write (REVfillstring(elements[18],10) )
-    f.write (REVfillstring(elements[19],10) )
-    f.write (REVfillstring(elements[20],10) )
-    f.write (REVfillstring(elements[21],10) )
-    f.write (REVfillstring(elements[22],10) )
-    f.write (REVfillstring(elements[23],10) )
-    f.write (REVfillstring(elements[24],10) )
+    f.write (fillstring(elements[18],10) )
+    f.write (fillstring(elements[19],10) )
+    f.write (fillstring(elements[20],10) )
+    f.write (fillstring(elements[21],10) )
+    f.write (fillstring(elements[22],10) )
+    f.write (fillstring(elements[23],10) )
+    f.write (fillstring(elements[24],10) )
     f.write("\n")
     f.write (fillstring(elements[25],5) )
     f.write(fillstring("",5) )
@@ -1202,11 +1226,11 @@ def addGener():
     f.write(fillstring(EX.get(),10))
     f.write(fillstring(HG.get(),10))#HX??
     f.write("\n")
-    separate(F1.get(),14)
+    separate(F1.get(),10)
     f.write("\n")
-    separate(F2.get(),14)
+    separate(F2.get(),10)
     f.write("\n")
-    separate(F3.get(),14)
+    separate(F3.get(),10)
     f.write("\n")
 #multiple gener
 def addgener2(elements):
@@ -1396,15 +1420,13 @@ for key in rockDict:
   dummy = rockDict[key]
   addrocks(dummy)
 
-
-if(checkfull(multi)):
-  addmulti()
-
 startline='''START----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8
 ----*----1-MOP: 123456789*123456789*1234----*----5----*----6----*----7----*----8'''
 
 f.write(startline+"\n")
 
+if(checkfull(multi)):
+  addmulti()
 
 if(checkfull(param)):
   addparam()

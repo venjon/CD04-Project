@@ -570,8 +570,6 @@ tk.Button(lcanvas, text="SOLVR", command=solvrclick).place(x=10,y=170)
 def generclick():
     global generCanvas
     clear()
-    #for x in range():
-        #rightPanels[x].pack_forget()
     generCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffc5ff")
     rightPanels.append(generCanvas)
     generCanvas.pack()
