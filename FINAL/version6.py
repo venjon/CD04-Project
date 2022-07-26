@@ -6,6 +6,8 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk, messagebox
 import os
+import webbrowser
+from tkinter.font import BOLD
 root = tk.Tk()
 #FRONTEND 
 rockDict = {}
@@ -30,6 +32,7 @@ def clear():
   for x in range(len(rightPanels)):
     rightPanels[x].pack_forget()
 
+tk.Button(lcanvas, text="Download and Exit", command=root.destroy, bg="red",font=BOLD,width=35).place(x=10,y=765)
 
 #TITLE
 titleLabel = tk.Label(lcanvas, text="Document Title:").place(x=10, y=10)
@@ -567,102 +570,138 @@ def solvrclick():
 tk.Button(lcanvas, text="SOLVR", command=solvrclick).place(x=10,y=170)
 
 #GENER
-def generclick():
-    global generCanvas
+def GenerOptionMenu_SelectionEvent(event):
+    global Generchoice
+    Generchoice = var9.get()
     clear()
-    generCanvas = tk.Canvas(rcanvas,width=460,height=800,bg="#ffc5ff")
-    rightPanels.append(generCanvas)
-    generCanvas.pack()
-    #EL
-    tk.Label(generCanvas,text="Element Code Name w/ source (Part 1) - EL",bg="#ffc5ff").grid(column=0,row=1)
-    global EL
-    EL = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=EL).grid(column=1,row=1)
-    #NE
-    tk.Label(generCanvas,text="Element Code Name w/ source (Part 2) - NE",bg="#ffc5ff").grid(column=0,row=2)
-    global NE
-    NE= tk.StringVar()
-    tk.Entry(generCanvas,textvariable=NE).grid(column=1,row=2)
-    #SL
-    tk.Label(generCanvas,text="Sink Code Name (Part 1) - SL",bg="#ffc5ff").grid(column=0,row=3)
-    global SL
-    SL = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=SL).grid(column=1,row=3)
-    #NS
-    tk.Label(generCanvas,text="Sink Code Name (Part 2) - NS",bg="#ffc5ff").grid(column=0,row=4)
-    global NS
-    NS = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=NS).grid(column=1,row=4)
-    #NSEQ
-    tk.Label(generCanvas,text="Additional Sink Quantity w/ Equal Injection Rate - NSEQ",bg="#ffc5ff").grid(column=0,row=5)
-    global NSEQ
-    NSEQ = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=NSEQ).grid(column=1,row=5)
-    #NADD
-    tk.Label(generCanvas,text="Increment Between Code Numbers of Successive Elements w/ Same Sink - NADD",bg="#ffc5ff").grid(column=0,row=6)
-    global NADD
-    NADD = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=NADD).grid(column=1,row=6)
-    #NADS
-    tk.Label(generCanvas,text="Increment Between Code Numbers of Successive Sinks- NADS",bg="#ffc5ff").grid(column=0,row=7)
-    global NADS
-    NADS = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=NADS).grid(column=1,row=7)
-    #LTAB
-    tk.Label(generCanvas,text="No. of Pts in Generation Table / Time. 0 or 1 = constant rate - LTAB",bg="#ffc5ff").grid(column=0,row=8)
-    global LTAB
-    LTAB = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=LTAB).grid(column=1,row=8)
-    #TYPE
-    tk.Label(generCanvas,text="Fluid/Heat Production Options - TYPE",bg="#ffc5ff").grid(column=0,row=9)
-    global TYPE
-    TYPE= tk.StringVar()
-    tk.Entry(generCanvas,textvariable=TYPE).grid(column=1,row=9)
-    #ITAB
-    tk.Label(generCanvas,text="Specific Enthalpies - ITAB",bg="#ffc5ff").grid(column=0,row=10)
-    global ITAB
-    ITAB= tk.StringVar()
-    tk.Entry(generCanvas,textvariable=ITAB).grid(column=1,row=10)
-    #GX
-    tk.Label(generCanvas,text="Constant Generation Rate, - for production, + for injection - GX",bg="#ffc5ff").grid(column=0,row=11)
-    global GX
-    GX = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=GX).grid(column=1,row=11)
-    #EX
-    tk.Label(generCanvas,text="Fixed Specific Enthalpy of Fluid for Injection (J/kg) - EX",bg="#ffc5ff").grid(column=0,row=12)
-    global EX
-    EX = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=EX).grid(column=1,row=12)
-    #HG
-    tk.Label(generCanvas,text="Layer Thickness (m) - HG",bg="#ffc5ff").grid(column=0,row=13)
-    global HG
-    HG = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=HG).grid(column=1,row=13)
-    #F1
-    tk.Label(generCanvas,text="Generation Times (separate by commas) - F1 - 1 to LTAB",bg="#ffc5ff").grid(column=0,row=14)
-    global F1
-    F1 = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=F1).grid(column=1,row=14)
-    #F2
-    tk.Label(generCanvas,text="Generation Rates (separate by commas) - F2 - 1 to LTAB",bg="#ffc5ff").grid(column=0,row=15)
-    global F2
-    F2 = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=F2).grid(column=1,row=15)
-    #F3
-    tk.Label(generCanvas,text="Specific Enthalpy of Fluid (separate by commas) - F3 - 1 to LTAB",bg="#ffc5ff").grid(column=0,row=16)
-    global F3
-    F3 = tk.StringVar()
-    tk.Entry(generCanvas,textvariable=F3).grid(column=1,row=16)
-    #SAVE
-    def generSave():
-        global gener
-        gener = []
-        gener = [EL.get(),NE.get(),SL.get(),NS.get(),NSEQ.get(),NADD.get(),NADS.get(),LTAB.get(),TYPE.get(),ITAB.get(),GX.get(),EX.get(),EX.get(),HG.get(),F1.get(),F2.get(),F3.get()]
-        print(gener)
-    global savegener
-    savegener = tk.Button(generCanvas,text="Save BEFORE Switching Page", command=generSave, bg="#00ff00")
-    savegener.grid(column=0,row=0,columnspan=2)
-tk.Button(lcanvas, text="GENER", command=generclick).place(x=10,y=210)
+    if Generchoice == "Add Generator":
+        gc=-1
+        newGen = tk.Toplevel(root)
+        newGen.geometry("200x100")
+        tk.Label(newGen,text="""Enter a name for your new sample
+        (preferably 5 characters)
+        DO NOT INCLUDE SPACES""").pack()
+        global newGenName
+        newGenName = tk.StringVar()
+        tk.Entry(newGen, width=30, textvariable=newGenName).pack()
+        def var3():
+            generoptions.append(newGenName.get())
+            newGen.destroy()
+            generList = tk.OptionMenu(lcanvas, var9, *(generoptions), command = GenerOptionMenu_SelectionEvent).place(x=10,y=210)
+            newgenercanvas = tk.Canvas(rcanvas, width=460, height=800, bg="#c1e2fe")
+            generoptionscanvas.append(newgenercanvas)
+            rightPanels.append(newgenercanvas)
+            generDict[generoptions[gc]] = []
+            #EL
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Name of Elerial - EL").grid(column=0,row=1)
+            global EL
+            EL = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=EL).grid(column=1,row=1)
+            #NE
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text=" - NE").grid(column=0,row=2)
+            global NE
+            NE = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=NE).grid(column=1,row=2)
+            #SL
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Gener Grain Density (kg/m^3) - SL").grid(column=0,row=3)
+            global SL
+            SL = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=SL).grid(column=1,row=3)
+            #NS
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Porosity (if not included in INCON) - NS").grid(column=0,row=4)
+            global NS
+            NS = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=NS).grid(column=1,row=4)
+            #NSEQ
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 1 - NSEQ").grid(column=0,row=5)
+            global NSEQ
+            NSEQ = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=NSEQ).grid(column=1,row=5)
+            #PER(2)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 2 - PER(2)").grid(column=0,row=6)
+            global NADD
+            NADD = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=NADD).grid(column=1,row=6)
+            #PER(3)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 3 - PER(3)").grid(column=0,row=7)
+            global NADS
+            NADS = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=NADS).grid(column=1,row=7)
+            #LTAB
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Forgenion Heat Conductivity in Liquid (W/m°C)- LTAB").grid(column=0,row=8)
+            global LTAB
+            LTAB = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=LTAB).grid(column=1,row=8)
+            #TYPE
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Gener Grain Specific Heat (J/kg°C) - TYPE").grid(column=0,row=9)
+            global TYPE
+            TYPE = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=TYPE).grid(column=1,row=9)
+            #ITAB
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Pore Compressibility - ITAB").grid(column=0,row=10)
+            global ITAB
+            ITAB = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=ITAB).grid(column=1,row=10)
+            #GX
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Pore Expansivity - GX").grid(column=0,row=11)
+            global GX
+            GX = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=GX).grid(column=1,row=11)
+            #EX
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Forgenion Heat Conductivity w/o Liquid (W/m°C) - EX").grid(column=0,row=12)
+            global EX
+            EX = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=EX).grid(column=1,row=12)
+            #HG
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Tortuosity Factor - HG").grid(column=0,row=13)
+            global HG
+            HG = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=HG).grid(column=1,row=13)
+            #F1
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Klinkenberg Parameter B [k*(1+b/P)] - F1").grid(column=0,row=14)
+            global F1
+            F1 = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=F1).grid(column=1,row=14)
+            #F2
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Distribution Coefficient of Parent Radionuclide - F2").grid(column=0,row=15)
+            global F2
+            F2 = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=F2).grid(column=1,row=15)
+            #F3
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Distribution Coefficient of Daughter Radionuclide - F3").grid(column=0,row=16)
+            global F3
+            F3 = tk.StringVar()
+            tk.Entry(generoptionscanvas[gc],textvariable=F3).grid(column=1,row=16)
+            #SAVE
+            def genersave():
+                generDict[generoptions[gc]] = []
+                generDict[generoptions[gc]] = [EL.get,NE.get(),SL.get(), NS.get(), NSEQ.get(), NADD.get(), NADS.get(), LTAB.get(), TYPE.get(), ITAB.get(), GX.get(), EX.get(), HG.get(), F1.get(), F2.get(), F3.get()]
+                print(generDict)
+            global savegener
+            savegener = tk.Button(generoptionscanvas[gc],text="Click to Save When FINISHED (do not return after switching page)", command=genersave, bg="#00ff00")
+            savegener.grid(column=0,row=0,columnspan=2)
+        tk.Button(newGen, text="Enter", command=lambda:var3()).pack()
+    else:
+        gc = generoptions.index(Generchoice)
+        for x in range(1, len(generoptionscanvas)):
+            generoptionscanvas[x].pack_forget()
+        savegener.grid_forget()
+        def genersave2():
+            print(gc)
+            generDict[generoptions[gc]] = [EL.get(),NE.get(),SL.get(), NS.get(), NSEQ.get(), NADD.get(), NADS.get(), LTAB.get(), TYPE.get(), ITAB.get(), GX.get(), EX.get(), HG.get(), F1.get(), F2.get(), F3.get()]
+            print(generDict)
+        savegener.config(command=genersave2)
+        savegener.grid(column=0,row=0,columnspan=2)
+        generoptionscanvas[gc].pack()
+        print(gc)
+
+var9 = tk.StringVar()
+var9.set("Generators")
+generoptions = ["Add Generator"]
+generoptionscanvas = ["placeholder"]
+generList = tk.OptionMenu(lcanvas, var9, *(generoptions), command = GenerOptionMenu_SelectionEvent)
+generDict = {}
+generList.place(x=10,y=210)
 
 #INDOM
 def indomclick():
@@ -960,6 +999,11 @@ tk.Button(lcanvas, text="GOFT", command=goftclick).place(x=10,y=490)
 root.mainloop()
 
 
+
+
+
+#OFFICIAL BACKEND
+f=open(var0.get()+".txt","w")
 #BACKEND MAIN FUNCTIONS++++++++++++++++++++++++++++
 def fillstring(initial,full_len):
 	charsLeft=full_len - len(initial)
@@ -978,225 +1022,279 @@ def separate(bigline, full_len):
 	for i in range(len(bigline)):
 		if(bigline[i]==','):
 			curstring=fillstring(curstring,full_len)
-			print(curstring,end="")
+			f.write(curstring )
 			curnum+=1
 			if(curnum%8==0):
-				print()
+				f.write("\n")
 			curstring=""
 		else:
 			curstring+=bigline[i]
-	print(fillstring(curstring,full_len),end="")
+	f.write(fillstring(curstring,full_len) )
 	curnum+=1
 	if(curnum*8==0):
-		print()
+		f.write("\n")
 def separateselec1(bigline,full_len):
     curnum=0
     curstring=""
     for i in range(len(bigline)):
         if(bigline[i]==','):
             curstring=fillstring(curstring,full_len)
-            print(curstring,end="")
+            f.write(curstring )
             curnum+=1
             if(curnum%16==0):
-                print()
+                f.write("\n")
             curstring=""
         else:
             curstring+=bigline[i]
-    print(fillstring(curstring,full_len),end="")
+    f.write(fillstring(curstring,full_len) )
     curnum+=1
     if(curnum*16==0):
-        print()
+        f.write("\n")
+def checkfull(listname):
+  for x in range(len(listname)):
+    if listname[x]!="":
+        return True
+  return False
 #BACKEND INDIVIDUAL FUNCTIONS++++++++++++++++++++++++++++
 #VENNELA EDITS
 
 def addrocks(elements):
-    rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print (rockline)
-    elements.insert(0,"")
-    for i in range(1,len(elements)):
-        if i==1 or i==2:
-            print(fillstring(elements[i],5), end="")
-        elif i<=9:
-            print(fillstring(elements[i],10), end="")
-        elif i<=10:#
-            print()
-            print(fillstring(elements[i],10), end="")
-        elif i<=16:
-            print(fillstring(elements[i],10), end="")
-        elif i<=17:
-            print()
-            print(fillstring("",5), end="")
-        elif i<=18:
-            print(fillstring("",5), end ="")
-            print(fillstring(elements[i],10), end="")
-        elif i<=24:
-            print(fillstring("",10), end="")
-        elif i<=25:
-            print()
-            print(fillstring("",5), end="")
-        elif(i<=26):
-            print(fillstring("",5), end ="")
-            print(fillstring(elements[i],10), end="")
-        elif(i<=32):
-            print(fillstring(elements[i],10), end="")		
-    print()
+   # rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
+    #f.write (rockline+"\n")
+    if(len(elements)==0):
+        pass
+    else:
+        elements.insert(0,"")
+        f.write(fillstring(elements[1],5))
+        f.write(fillstring(elements[2],5))
+        f.write(fillstring(elements[3],10))
+        f.write(fillstring(elements[4],10))
+        f.write(fillstring(elements[5],10))
+        f.write(fillstring(elements[6],10))
+        f.write(fillstring(elements[7],10))
+        f.write(fillstring(elements[8],10))
+        f.write(fillstring(elements[9],10))
+        f.write("\n")
+        f.write(fillstring(elements[10],10))
+        f.write(fillstring(elements[11],10))
+        f.write(fillstring(elements[12],10))
+        f.write(fillstring(elements[13],10))
+        f.write(fillstring(elements[14],10))
+        f.write(fillstring(elements[15],10))
+        f.write(fillstring(elements[16],10))
+        f.write("\n")
+        f.write(fillstring(elements[17],5))
+        f.write(fillstring("",5))
+        f.write(fillstring(elements[18],10))
+        f.write(fillstring(elements[19],10))
+        f.write(fillstring(elements[20],10))
+        f.write(fillstring(elements[21],10))
+        f.write(fillstring(elements[22],10))
+        f.write(fillstring(elements[23],10))
+        f.write(fillstring(elements[24],10))
+        f.write("\n")
+        f.write(fillstring(elements[25],5))
+        f.write(fillstring("",5))
+        f.write(fillstring(elements[26],10))
+        f.write(fillstring(elements[27],10))
+        f.write(fillstring(elements[28],10))
+        f.write(fillstring(elements[29],10))
+        f.write(fillstring(elements[30],10))
+        f.write(fillstring(elements[31],10))
+        f.write(fillstring(elements[32],10))
+        f.write("\n")
 
 
 def addmulti():
     multiline="MULTI----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(multiline)    
-    print(fillstring(NK.get(),5), end="")
-    print(fillstring(NEQ.get(), 5), end="")
-    print(fillstring(NPH.get(), 5), end="")
-    print(fillstring(NB.get(), 5), end="")
-    print(fillstring(NKIN.get(), 5), end="")
-    print()
+    f.write(multiline+"\n")    
+    f.write(fillstring(NK.get(),5) )
+    f.write(fillstring(NEQ.get(), 5) )
+    f.write(fillstring(NPH.get(), 5) )
+    f.write(fillstring(NB.get(), 5) )
+    f.write(fillstring(NKIN.get(), 5) )
+    f.write("\n")
 
 
 def addparam():
     paramline="PARAM----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(paramline)    
-    print(fillstring(NOITE.get(),2), end="")
-    print(fillstring(KDATA.get(),2), end="")
-    print(fillstring(MCYC.get(),4), end="")
-    print(fillstring(MSEC.get(),4), end="")
-    print(fillstring(MCYPR.get(),4 ), end="")
-    print(fillstring(MOPII124.get(),24), end="")
-    print(fillstring("",10), end="")
-    print(fillstring(TEXP.get(), 10), end="")
-    print(fillstring(BE.get(), 10), end="")
-    print(fillstring("",10), end="")
-    print()
-    print(fillstring(TSTART.get(), 10), end="")
-    print(fillstring(TIMAX.get(), 10), end="")
-    print(fillstring(DELTENORNDLT.get(), 10), end="")
-    print(fillstring(DELTMX.get(), 10), end="")
-    print(fillstring(ELST.get(), 5), end="")
-    print(fillstring("", 5), end="")
-    print(fillstring(GF.get(),10), end="")
-    print(fillstring(REDLT.get(), 10), end="")
-    print(fillstring(SCALE.get(), 10), end="")
-    print()
+    f.write(paramline+"\n")    
+    f.write(fillstring(NOITE.get(),2) )
+    f.write(fillstring(KDATA.get(),2) )
+    f.write(fillstring(MCYC.get(),4) )
+    f.write(fillstring(MSEC.get(),4) )
+    f.write(fillstring(MCYPR.get(),4 ) )
+    
+    charsLeft=24- len(MOPII124.get())
+    finalstring=""
+    if charsLeft < 0:
+        for i in range(24):
+            finalstring+=MOPII124.get()[i]
+    else:
+        finalstring += MOPII124.get()
+        for i in range(charsLeft):
+            finalstring+=" "
+         
+    f.write(finalstring) 
+    f.write(fillstring("",10) )
+    f.write(fillstring(TEXP.get(), 10) )
+    f.write(fillstring(BE.get(), 10) )
+    f.write(fillstring("",10) )
+    f.write("\n")
+    f.write(fillstring(TSTART.get(), 10) )
+    f.write(fillstring(TIMAX.get(), 10) )
+    f.write(fillstring(DELTENORNDLT.get(), 10) )
+    f.write(fillstring(DELTMX.get(), 10) )
+    f.write(fillstring(ELST.get(), 5) )
+    f.write(fillstring("", 5) )
+    f.write(fillstring(GF.get(),10) )
+    f.write(fillstring(REDLT.get(), 10) )
+    f.write(fillstring(SCALE.get(), 10) )
+    f.write("\n")
     separate(DLTI.get(),10)
-    print()
-    print(fillstring(RE1.get(), 10), end="")
-    print(fillstring(RE2.get(), 10), end="")
-    print(fillstring(U.get(), 10), end="")
-    print(fillstring(WUP.get(), 10), end="")
-    print(fillstring(WNR.get(), 10), end="")
-    print(fillstring(DFAC.get(), 10), end="")
-    print()
-    print(fillstring(DEP1.get(), 20), end="")
-    print(fillstring(DEP2.get(), 20), end="")
-    print(fillstring(DEP3.get(), 20), end="")
-    print(fillstring(DEP4.get(), 20), end="")
-    print()
+    f.write("\n")
+    f.write(fillstring(RE1.get(), 10) )
+    f.write(fillstring(RE2.get(), 10) )
+    f.write(fillstring(U.get(), 10) )
+    f.write(fillstring(WUP.get(), 10) )
+    f.write(fillstring(WNR.get(), 10) )
+    f.write(fillstring(DFAC.get(), 10) )
+    f.write("\n")
+    f.write(fillstring(DEP1.get(), 20) )
+    f.write(fillstring(DEP2.get(), 20) )
+    f.write(fillstring(DEP3.get(), 20) )
+    f.write(fillstring(DEP4.get(), 20) )
+    f.write("\n")
   
 
 def addsolvr():
     solvrline="SOLVR----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(solvrline) 
-    print(fillstring(MATSLV.get(),1), end="")
-    print(fillstring("",2), end="")
-    print(fillstring(ZPROCS.get(),2), end="")
-    print(fillstring("",3), end="")
-    print(fillstring(OPROCS.get(),2), end="")
-    print(fillstring(RITMAX.get(),10), end="")
-    print(fillstring(CLOSUR.get(),10), end="")
-    print()
+    f.write(solvrline+"\n") 
+    f.write(fillstring(MATSLV.get(),1) )
+    f.write(fillstring("",2) )
+    f.write(fillstring(ZPROCS.get(),2) )
+    f.write(fillstring("",3) )
+    f.write(fillstring(OPROCS.get(),2) )
+    f.write(fillstring(RITMAX.get(),10) )
+    f.write(fillstring(CLOSUR.get(),10) )
+    f.write("\n")
 
 
 def addrpcap(elements):
     rpcapline="RPCAP----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print (rpcapline)
+    f.write (rpcapline+"\n")
+    #elements.insert(0,"")
     if(len(elements)<17):
         return
-    elements.insert(0,"")
-    
-    print (fillstring(elements[17],5),end="")
-    print(fillstring("",5), end ="")
-    print (fillstring(elements[18],10),end="")
-    print (fillstring(elements[19],10),end="")
-    print (fillstring(elements[20],10),end="")
-    print (fillstring(elements[21],10),end="")
-    print (fillstring(elements[22],10),end="")
-    print (fillstring(elements[23],10),end="")
-    print (fillstring(elements[24],10),end="")
-    print()
-    print (fillstring(elements[25],5),end="")
-    print(fillstring("",5), end ="")
-    print (fillstring(elements[26],10),end="")
-    print (fillstring(elements[27],10),end="")
-    print (fillstring(elements[28],10),end="")
-    print (fillstring(elements[29],10),end="")
-    print (fillstring(elements[30],10),end="")
-    print (fillstring(elements[31],10),end="")
-    print (fillstring(elements[32],10),end="")
-    print()
-'''  
+    f.write (fillstring(elements[17],5) )
+    f.write(fillstring("",5) )
+    f.write (fillstring(elements[18],10) )
+    f.write (fillstring(elements[19],10) )
+    f.write (fillstring(elements[20],10) )
+    f.write (fillstring(elements[21],10) )
+    f.write (fillstring(elements[22],10) )
+    f.write (fillstring(elements[23],10) )
+    f.write (fillstring(elements[24],10) )
+    f.write("\n")
+    f.write (fillstring(elements[25],5) )
+    f.write(fillstring("",5) )
+    f.write (fillstring(elements[26],10) )
+    f.write (fillstring(elements[27],10) )
+    f.write (fillstring(elements[28],10) )
+    f.write (fillstring(elements[29],10) )
+    f.write (fillstring(elements[30],10) )
+    f.write (fillstring(elements[31],10) )
+    f.write (fillstring(elements[32],10) )
+    f.write("\n")
+  
 #single gener: 
+def addGener():
+    generline="GENER----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
+    f.write(generline+"\n")    
+    f.write(fillstring(EL.get(),3))
+    f.write(fillstring(NE.get(),2))
+    f.write(fillstring(SL.get(),3))
+    f.write(fillstring(NS.get(),2))
+    f.write(fillstring(NSEQ.get(),5))
+    f.write(fillstring(NADD.get(),5))
+    f.write(fillstring(NADS.get(),5))
+    f.write(fillstring(LTAB.get(),5))
+    f.write(fillstring("",5))
+    f.write(fillstring(TYPE.get(),4))
+    f.write(fillstring(ITAB.get(),1))
+    f.write(fillstring(GX.get(),10))
+    f.write(fillstring(EX.get(),10))
+    f.write(fillstring(HG.get(),10))#HX??
+    f.write("\n")
+    separate(F1.get(),10)
+    f.write("\n")
+    separate(F2.get(),10)
+    f.write("\n")
+    separate(F3.get(),10)
+    f.write("\n")
+#multiple gener
 def addgener2(elements):
     generline="GENER----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(generline)    
-    print(fillstring(elements[0],3), end="")
-    print(fillstring(elements[1],2), end="")
-    print(fillstring(elements[2],3), end="")
-    print(fillstring(elements[3],2), end="")
-    print(fillstring(elements[4],5), end="")
-    print(fillstring(elements[5],5), end="")
-    print(fillstring(elements[6],5), end="")
-    print(fillstring(elements[7],5), end="")
-    print(fillstring("",5), end="")
-    print(fillstring(elements[8],4), end="")
-    print(fillstring(elements[9],1), end="")
-    print(fillstring(elements[10],10), end="")
-    print(fillstring(elements[11],10), end="")
-    print(fillstring(elements[12],10), end="")
-    print()
-    separate(elements[13],10)
-    print()
-    separate(elements[14],10)
-    print()
-    separate(elements[15],10)
-    print()
-'''
+    f.write(generline)    
+    f.write(fillstring(elements[0],3) )
+    f.write(fillstring(elements[1],2) )
+    f.write(fillstring(elements[2],3) )
+    f.write(fillstring(elements[3],2) )
+    f.write(fillstring(elements[4],5) )
+    f.write(fillstring(elements[5],5) )
+    f.write(fillstring(elements[6],5) )
+    f.write(fillstring(elements[7],5) )
+    f.write(fillstring("",5) )
+    f.write(fillstring(elements[8],4) )
+    f.write(fillstring(elements[9],1) )
+    f.write(fillstring(elements[10],10) )
+    f.write(fillstring(elements[11],10) )
+    f.write(fillstring(elements[12],10) )
+    f.write("\n")
+    separate(elements[13],14)
+    f.write("\n")
+    separate(elements[14],14)
+    f.write("\n")
+    separate(elements[15],14)
+    f.write("\n")
+
 def addindom():
     indomline="INDOM----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(indomline)    
-    print(fillstring(MAT1.get(),5), end="")
-    print()
+    f.write(indomline +"\n")    
+    f.write(fillstring(MAT1.get(),5) )
+    f.write("\n")
     separate(X.get(),20)
-    print()
+    f.write("\n")
 
 
 def addDiffu():
     diffuline="DIFFU----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(diffuline)    
+    f.write(diffuline+"\n")    
     separate(FDDIAGI1.get(),10)
     separate(FDDIAGI2.get(),10)
-    print()
+    f.write("\n")
 
 def addselec():
     selecline="SELEC----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(selecline)    
+    f.write(selecline+"\n")    
     separateselec1(IEI.get(),5)
-    print()
+    f.write("\n")
     separate(FEI.get(),10)
-    print()
-    print()
+    f.write("\n")
+    f.write("\n")
   
 def addTimes():
     Timesline="TIMES----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(Timesline)    
-    print(fillstring(ITI.get(),5), end="")
-    print(fillstring(ITE.get(),5), end="")
-    print(fillstring(DELAF.get(),10), end="")
-    print(fillstring(TINTER.get(),10), end="")
-    print()
+    f.write(Timesline+"\n")    
+    f.write(fillstring(ITI.get(),5) )
+    f.write(fillstring(ITE.get(),5) )
+    f.write(fillstring(DELAF.get(),10) )
+    f.write(fillstring(TINTER.get(),10) )
+    f.write("\n")
     separate(TISI.get(),10)
-    #print TIS(1)-TIS(ITI)
+    #f.write TIS(1)-TIS(ITI)
 
-    print()
+    f.write("\n")
     
 def checkexists(examplestring):
     if (examplestring=="" or examplestring=="separate by commas"):
@@ -1205,115 +1303,127 @@ def checkexists(examplestring):
     
 def addFOFT():
     FOFTline="FOFT-----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(FOFTline) 
+    f.write(FOFTline+"\n") 
     if(checkexists(EOFT1.get())):   
-        print(fillstring(EOFT1.get(),5))
+        f.write(fillstring(EOFT1.get(),5)+"\n")
     if(checkexists(EOFT2.get())):
-        print(fillstring(EOFT2.get(),5))
+        f.write(fillstring(EOFT2.get(),5)+"\n")
     if(checkexists(EOFT3.get())):
-        print(fillstring(EOFT3.get(),5))
+        f.write(fillstring(EOFT3.get(),5)+"\n")
     if(checkexists(EOFT4.get())):
-        print(fillstring(EOFT4.get(),5))
+        f.write(fillstring(EOFT4.get(),5)+"\n")
     if(checkexists(EOFT5.get())):
-        print(fillstring(EOFT5.get(),5))
+        f.write(fillstring(EOFT5.get(),5)+"\n")
     if(checkexists(EOFT6.get())):
-        print(fillstring(EOFT6.get(),5))
+        f.write(fillstring(EOFT6.get(),5)+"\n")
     if(checkexists(EOFT7.get())):
-        print(fillstring(EOFT7.get(),5))
+        f.write(fillstring(EOFT7.get(),5)+"\n")
     if(checkexists(EOFT8.get())):
-        print(fillstring(EOFT8.get(),5))
+        f.write(fillstring(EOFT8.get(),5)+"\n")
     if(checkexists(EOFT9.get())):
         curnum=0
         curstring=""
         for i in range(len(EOFT9.get())):
             if(EOFT9.get()[i]==','):
                 curstring=fillstring(curstring,5)
-                print(curstring)
+                f.write(curstring)
                 curstring=""
             else:
                 curstring+=EOFT9.get()[i]
-        print(fillstring(curstring,5))
+        f.write(fillstring(curstring,5)+"\n")
     
 
 
 def addCOFT():
     COFTline="COFT-----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(COFTline)    
+    f.write(COFTline+"\n")    
     if(checkexists(ECOFT1.get())): 
-        print(fillstring(ECOFT1.get(),5))
+        f.write(fillstring(ECOFT1.get(),5)+"\n")
     if(checkexists(ECOFT2.get())):
-        print(fillstring(ECOFT2.get(),5))
+        f.write(fillstring(ECOFT2.get(),5)+"\n")
     if(checkexists(ECOFT3.get())):
-        print(fillstring(ECOFT3.get(),5))
+        f.write(fillstring(ECOFT3.get(),5)+"\n")
     if(checkexists(ECOFT4.get())):
-        print(fillstring(ECOFT4.get(),5))
+        f.write(fillstring(ECOFT4.get(),5)+"\n")
     if(checkexists(ECOFT5.get())):
-        print(fillstring(ECOFT5.get(),5))
+        f.write(fillstring(ECOFT5.get(),5)+"\n")
     if(checkexists(ECOFT6.get())):
-        print(fillstring(ECOFT6.get(),5))
+        f.write(fillstring(ECOFT6.get(),5)+"\n")
     if(checkexists(ECOFT7.get())):
-        print(fillstring(ECOFT7.get(),5))
+        f.write(fillstring(ECOFT7.get(),5)+"\n")
     if(checkexists(ECOFT8.get())):
-        print(fillstring(ECOFT8.get(),5))
+        f.write(fillstring(ECOFT8.get(),5)+"\n")
     if(checkexists(ECOFT9.get())):
         curnum=0
         curstring=""
         for i in range(0,len(ECOFT9.get())):
             if(ECOFT9.get()[i]==','):
                 curstring=fillstring(curstring,5)
-                print(curstring)
+                f.write(curstring)
                 curstring=""
             else:
                 curstring+=ECOFT9.get()[i]
-        print(fillstring(curstring,5))
+        f.write(fillstring(curstring,5)+"\n")
     
 
 def addGOFT():
     GOFTline="GOFT-----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    print(GOFTline)    
+    f.write(GOFTline+"\n")    
     if(checkexists(EGOFT1.get())): 
-        print(fillstring(EGOFT1.get(),5))
+        f.write(fillstring(EGOFT1.get(),5)+"\n")
     if(checkexists(EGOFT2.get())):
-        print(fillstring(EGOFT2.get(),5))
+        f.write(fillstring(EGOFT2.get(),5)+"\n")
     if(checkexists(EGOFT3.get())):
-        print(fillstring(EGOFT3.get(),5))
+        f.write(fillstring(EGOFT3.get(),5)+"\n")
     if(checkexists(EGOFT4.get())):
-        print(fillstring(EGOFT4.get(),5))
+        f.write(fillstring(EGOFT4.get(),5)+"\n")
     if(checkexists(EGOFT5.get())):
-        print(fillstring(EGOFT5.get(),5))
+        f.write(fillstring(EGOFT5.get(),5)+"\n")
     if(checkexists(EGOFT6.get())):
-        print(fillstring(EGOFT6.get(),5))
+        f.write(fillstring(EGOFT6.get(),5)+"\n")
     if(checkexists(EGOFT7.get())):
-        print(fillstring(EGOFT7.get(),5))
+        f.write(fillstring(EGOFT7.get(),5)+"\n")
     if(checkexists(EGOFT8.get())):
-        print(fillstring(EGOFT8.get(),5))
+        f.write(fillstring(EGOFT8.get(),5)+"\n")
     if(checkexists(EGOFT9.get())):
         curnum=0
         curstring=""
         for i in range(0,len(EGOFT9.get())):
             if(EGOFT9.get()[i]==','):
                 curstring=fillstring(curstring,5)
-                print(curstring)
+                f.write(curstring)
                 curstring=""
             else:
                 curstring+=EGOFT9.get()[i]
-        print(fillstring(curstring,5))
+        f.write(fillstring(curstring,5)+"\n")
+    
+
     
     
-def checkfull(listname):
-  for x in range(len(listname)):
-    if listname[x]!="":
-        return True
-  return False
+    
+    
+    
+    
+    
+
 #BACKEND RUNS------ONLY PLACE WHERE PRINTING SHOULD HAPPEN
 #all the for loops checking if lists are empty
 
-#print title
-print(var0.get()[0:80])
+#f.write title
+
+f.write(var0.get()[0:80] + "\n")
+
+rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
+f.write (rockline+"\n")
 
 for key in rockDict:
   dummy = rockDict[key]
   addrocks(dummy)
+
+startline='''START----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8
+----*----1-MOP: 123456789*123456789*1234----*----5----*----6----*----7----*----8'''
+
+f.write(startline+"\n")
 
 if(checkfull(multi)):
   addmulti()
@@ -1323,13 +1433,19 @@ if(checkfull(param)):
   
 if(checkfull(solvr)):
   addsolvr()
-  
-for key in rockDict:
-  dummy = rockDict[key]
-  addrpcap(dummy)
 
-#GENER
+if(bool(rockDict)==False):
+    pass
+else:
+    for key in rockDict:
+        dummy = rockDict[key]
+        addrpcap(dummy)
+        break
 
+#GENERsingle
+if(checkfull(gener)):
+  addGener()
+    
 if(checkfull(indom)):
   addindom()
   
@@ -1352,6 +1468,9 @@ if(checkfull(goft)):
   addGOFT()
   
 
-#print ending line
-print("ENDCY----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8")
+#f.write ending line
+f.write("ENDCY----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8")
 #PROGRAM OVER---------------------
+
+f.close()
+webbrowser.open(var0.get()+".txt")
