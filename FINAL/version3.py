@@ -982,6 +982,17 @@ def fillstring(initial,full_len):
 			finalstring+=" "
 		finalstring += initial
 	return finalstring
+def REVfillstring(initial,full_len):
+    charsLeft = full_len - len(initial)
+    finalstring=""
+    if charsLeft <0:
+        for i in range(full_len):
+            finalstring+=initial[i]
+    else:
+        finalstring+=initial
+        for i in range(charsLeft):
+            finalstring+=" "
+    return finalstring
 def separate(bigline, full_len):
 	curnum=0
 	curstring=""
@@ -1049,6 +1060,7 @@ def addrocks(elements):
         f.write(fillstring(elements[15],10))
         f.write(fillstring(elements[16],10))
         f.write("\n")
+        '''
         f.write(fillstring(elements[17],5))
         f.write(fillstring("",5))
         f.write(fillstring(elements[18],10))
@@ -1069,7 +1081,7 @@ def addrocks(elements):
         f.write(fillstring(elements[31],10))
         f.write(fillstring(elements[32],10))
         f.write("\n")
-
+        '''
 
 def addmulti():
     multiline="MULTI----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
@@ -1141,7 +1153,7 @@ def addsolvr():
     f.write(fillstring(ZPROCS.get(),2) )
     f.write(fillstring("",3) )
     f.write(fillstring(OPROCS.get(),2) )
-    f.write(fillstring(RITMAX.get(),10) )
+    f.write(fillstring(RITMAX.get(),10) )#issue here why is 0.8 in the random middle 
     f.write(fillstring(CLOSUR.get(),10) )
     f.write("\n")
 
@@ -1154,13 +1166,13 @@ def addrpcap(elements):
         return
     f.write (fillstring(elements[17],5) )
     f.write(fillstring("",5) )
-    f.write (fillstring(elements[18],10) )
-    f.write (fillstring(elements[19],10) )
-    f.write (fillstring(elements[20],10) )
-    f.write (fillstring(elements[21],10) )
-    f.write (fillstring(elements[22],10) )
-    f.write (fillstring(elements[23],10) )
-    f.write (fillstring(elements[24],10) )
+    f.write (REVfillstring(elements[18],10) )
+    f.write (REVfillstring(elements[19],10) )
+    f.write (REVfillstring(elements[20],10) )
+    f.write (REVfillstring(elements[21],10) )
+    f.write (REVfillstring(elements[22],10) )
+    f.write (REVfillstring(elements[23],10) )
+    f.write (REVfillstring(elements[24],10) )
     f.write("\n")
     f.write (fillstring(elements[25],5) )
     f.write(fillstring("",5) )
@@ -1192,11 +1204,11 @@ def addGener():
     f.write(fillstring(EX.get(),10))
     f.write(fillstring(HG.get(),10))#HX??
     f.write("\n")
-    separate(F1.get(),10)
+    separate(F1.get(),14)
     f.write("\n")
-    separate(F2.get(),10)
+    separate(F2.get(),14)
     f.write("\n")
-    separate(F3.get(),10)
+    separate(F3.get(),14)
     f.write("\n")
 #multiple gener
 def addgener2(elements):
@@ -1386,13 +1398,15 @@ for key in rockDict:
   dummy = rockDict[key]
   addrocks(dummy)
 
+
+if(checkfull(multi)):
+  addmulti()
+
 startline='''START----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8
 ----*----1-MOP: 123456789*123456789*1234----*----5----*----6----*----7----*----8'''
 
 f.write(startline+"\n")
 
-if(checkfull(multi)):
-  addmulti()
 
 if(checkfull(param)):
   addparam()
