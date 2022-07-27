@@ -70,7 +70,7 @@ def RocksOptionMenu_SelectionEvent(event):
             MAT = (rockoptions[rc])[0:5]
             tk.Label(rockoptionscanvas[rc],text=MAT, bg="white").grid(column=1,row=1)
             #NAD
-            tk.Label(rockoptionscanvas[rc],bg="#c1e2fe",text=" - NAD").grid(column=0,row=2)
+            tk.Label(rockoptionscanvas[rc],bg="#c1e2fe",text="Data Record Settings - NAD").grid(column=0,row=2)
             global NAD
             NAD = tk.StringVar()
             tk.Entry(rockoptionscanvas[rc],textvariable=NAD).grid(column=1,row=2)
