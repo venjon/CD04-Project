@@ -1016,6 +1016,17 @@ def fillstring(initial,full_len):
 			finalstring+=" "
 		finalstring += initial
 	return finalstring
+def REVfillstring(initial,full_len):
+    charsLeft = full_len - len(initial)
+    finalstring=""
+    if charsLeft <0:
+        for i in range(full_len):
+            finalstring+=initial[i]
+    else:
+        finalstring+=initial
+        for i in range(charsLeft):
+            finalstring+=" "
+    return finalstring
 def separate(bigline, full_len):
 	curnum=0
 	curstring=""
@@ -1062,6 +1073,7 @@ def addrocks(elements):
    # rockline="ROCKS----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
     #f.write (rockline+"\n")
     if(len(elements)==0):
+        f.write("\n")
         pass
     else:
         elements.insert(0,"")
@@ -1075,14 +1087,21 @@ def addrocks(elements):
         f.write(fillstring(elements[8],10))
         f.write(fillstring(elements[9],10))
         f.write("\n")
-        f.write(fillstring(elements[10],10))
-        f.write(fillstring(elements[11],10))
-        f.write(fillstring(elements[12],10))
-        f.write(fillstring(elements[13],10))
-        f.write(fillstring(elements[14],10))
-        f.write(fillstring(elements[15],10))
-        f.write(fillstring(elements[16],10))
+        secondline=False
+        for i in range(10,17):
+            if elements[i]!="":
+                secondline=True
+        if(secondline==True):
+            f.write(fillstring(elements[10],10))
+            f.write(fillstring(elements[11],10))
+            f.write(fillstring(elements[12],10))
+            f.write(fillstring(elements[13],10))
+            f.write(fillstring(elements[14],10))
+            f.write(fillstring(elements[15],10))
+            f.write(fillstring(elements[16],10))
+            f.write("\n") 
         f.write("\n")
+        '''
         f.write(fillstring(elements[17],5))
         f.write(fillstring("",5))
         f.write(fillstring(elements[18],10))
@@ -1103,6 +1122,7 @@ def addrocks(elements):
         f.write(fillstring(elements[31],10))
         f.write(fillstring(elements[32],10))
         f.write("\n")
+        '''
 
 
 def addmulti():
@@ -1188,13 +1208,13 @@ def addrpcap(elements):
         return
     f.write (fillstring(elements[17],5) )
     f.write(fillstring("",5) )
-    f.write (fillstring(elements[18],10) )
-    f.write (fillstring(elements[19],10) )
-    f.write (fillstring(elements[20],10) )
-    f.write (fillstring(elements[21],10) )
-    f.write (fillstring(elements[22],10) )
-    f.write (fillstring(elements[23],10) )
-    f.write (fillstring(elements[24],10) )
+    f.write (REVfillstring(elements[18],10) )
+    f.write (REVfillstring(elements[19],10) )
+    f.write (REVfillstring(elements[20],10) )
+    f.write (REVfillstring(elements[21],10) )
+    f.write (REVfillstring(elements[22],10) )
+    f.write (REVfillstring(elements[23],10) )
+    f.write (REVfillstring(elements[24],10) )
     f.write("\n")
     f.write (fillstring(elements[25],5) )
     f.write(fillstring("",5) )
@@ -1226,16 +1246,17 @@ def addGener():
     f.write(fillstring(EX.get(),10))
     f.write(fillstring(HG.get(),10))#HX??
     f.write("\n")
-    separate(F1.get(),10)
+    separate(F1.get(),14)
     f.write("\n")
-    separate(F2.get(),10)
+    separate(F2.get(),14)
     f.write("\n")
-    separate(F3.get(),10)
+    separate(F3.get(),14)
     f.write("\n")
 #multiple gener
 def addgener2(elements):
-    generline="GENER----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
-    f.write(generline)    
+    if(len(elements)==0):
+        f.write("\n")
+        pass
     f.write(fillstring(elements[0],3) )
     f.write(fillstring(elements[1],2) )
     f.write(fillstring(elements[2],3) )
@@ -1251,11 +1272,15 @@ def addgener2(elements):
     f.write(fillstring(elements[11],10) )
     f.write(fillstring(elements[12],10) )
     f.write("\n")
-    separate(elements[13],14)
-    f.write("\n")
-    separate(elements[14],14)
-    f.write("\n")
-    separate(elements[15],14)
+    if(elements[13]!=""):
+        separate(elements[13],14)
+        f.write("\n")
+    if(elements[14]!=""):
+        separate(elements[14],14)
+        f.write("\n")
+    if(elements[15]!=""):
+        separate(elements[15],14)
+        f.write("\n")
     f.write("\n")
 
 def addindom():
@@ -1331,7 +1356,7 @@ def addFOFT():
             else:
                 curstring+=EOFT9.get()[i]
         f.write(fillstring(curstring,5)+"\n")
-    
+    f.write("\n")
 
 
 def addCOFT():
@@ -1364,7 +1389,7 @@ def addCOFT():
             else:
                 curstring+=ECOFT9.get()[i]
         f.write(fillstring(curstring,5)+"\n")
-    
+    f.write("\n")
 
 def addGOFT():
     GOFTline="GOFT-----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
@@ -1396,7 +1421,7 @@ def addGOFT():
             else:
                 curstring+=EGOFT9.get()[i]
         f.write(fillstring(curstring,5)+"\n")
-    
+    f.write("\n")
 
     
     
@@ -1419,14 +1444,16 @@ f.write (rockline+"\n")
 for key in rockDict:
   dummy = rockDict[key]
   addrocks(dummy)
-
+  
+if(checkfull(multi)):
+  addmulti()
+  
 startline='''START----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8
 ----*----1-MOP: 123456789*123456789*1234----*----5----*----6----*----7----*----8'''
 
 f.write(startline+"\n")
 
-if(checkfull(multi)):
-  addmulti()
+
 
 if(checkfull(param)):
   addparam()
@@ -1441,10 +1468,18 @@ else:
         dummy = rockDict[key]
         addrpcap(dummy)
         break
-
-#GENERsingle
+    
+if(bool(generDict)):
+    generline="GENER----1----*----2----*----3----*----4----*----5----*----6----*----7----*----8"
+    f.write(generline+"\n")    
+    for key in generDict:
+        dummy = generDict[key]
+        addgener2(dummy)
+  
+  
+'''#GENERsingle
 if(checkfull(gener)):
-  addGener()
+  addGener()'''
     
 if(checkfull(indom)):
   addindom()

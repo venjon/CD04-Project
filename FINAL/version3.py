@@ -1419,7 +1419,15 @@ else:
         dummy = rockDict[key]
         addrpcap(dummy)
         break
-
+'''
+if(bool(gener)==False):
+    pass
+else:
+    for key in gener:
+        dummy = rockDict[key]
+        addrpcap(dummy)
+        break
+'''
 #GENERsingle
 if(checkfull(gener)):
   addGener()
