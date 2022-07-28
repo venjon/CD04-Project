@@ -380,7 +380,7 @@ If the above values for KDATA are increased by 10, printout will occur after eac
 23: Used by dispersion module T2DM
 24: Determines handling of multiphase diffusive fluxes at interfaces; 0 for harmonic weighting of fully coupled effective multiphase
 diffusivity, 1 for separate harmonic weighting of gas and liquid phase diffusivities""")
-    tk.Button(paramCanvas,text="MOP (I) I=1 to 24; separate by commas (click for more info)",command=mop,bg="#ffffc5").grid(column=0,row=6)
+    tk.Button(paramCanvas,text="MOP (I) I=1 to 24; enter consecutively (click for more info)",command=mop,bg="#ffffc5").grid(column=0,row=6)
     global MOPII124
     MOPII124 = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=MOPII124).grid(column=1,row=6)
