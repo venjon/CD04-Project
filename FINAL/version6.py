@@ -70,7 +70,7 @@ def RocksOptionMenu_SelectionEvent(event):
             MAT = (rockoptions[rc])[0:5]
             tk.Label(rockoptionscanvas[rc],text=MAT, bg="white").grid(column=1,row=1)
             #NAD
-            tk.Label(rockoptionscanvas[rc],bg="#c1e2fe",text=" - NAD").grid(column=0,row=2)
+            tk.Label(rockoptionscanvas[rc],bg="#c1e2fe",text="Data Record Settings - NAD").grid(column=0,row=2)
             global NAD
             NAD = tk.StringVar()
             tk.Entry(rockoptionscanvas[rc],textvariable=NAD).grid(column=1,row=2)
@@ -380,7 +380,7 @@ If the above values for KDATA are increased by 10, printout will occur after eac
 23: Used by dispersion module T2DM
 24: Determines handling of multiphase diffusive fluxes at interfaces; 0 for harmonic weighting of fully coupled effective multiphase
 diffusivity, 1 for separate harmonic weighting of gas and liquid phase diffusivities""")
-    tk.Button(paramCanvas,text="MOP (I) I=1 to 24; separate by commas (click for more info)",command=mop,bg="#ffffc5").grid(column=0,row=6)
+    tk.Button(paramCanvas,text="MOP (I) I=1 to 24; enter consecutively (click for more info)",command=mop,bg="#ffffc5").grid(column=0,row=6)
     global MOPII124
     MOPII124 = tk.StringVar()
     tk.Entry(paramCanvas,textvariable=MOPII124).grid(column=1,row=6)
@@ -593,82 +593,82 @@ def GenerOptionMenu_SelectionEvent(event):
             rightPanels.append(newgenercanvas)
             generDict[generoptions[gc]] = []
             #EL
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Name of Elerial - EL").grid(column=0,row=1)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Element Code Name w/ source (Part 1) - EL").grid(column=0,row=1)
             global EL
             EL = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=EL).grid(column=1,row=1)
             #NE
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text=" - NE").grid(column=0,row=2)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Element Code Name w/ source - NE").grid(column=0,row=2)
             global NE
             NE = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=NE).grid(column=1,row=2)
             #SL
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Gener Grain Density (kg/m^3) - SL").grid(column=0,row=3)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Sink Code Name (Part 1) - SL").grid(column=0,row=3)
             global SL
             SL = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=SL).grid(column=1,row=3)
             #NS
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Porosity (if not included in INCON) - NS").grid(column=0,row=4)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Sink Code Name (Part 2) - NS").grid(column=0,row=4)
             global NS
             NS = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=NS).grid(column=1,row=4)
             #NSEQ
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 1 - NSEQ").grid(column=0,row=5)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Additional Sink Quantity w/ Equal Injection Rate - NSEQ").grid(column=0,row=5)
             global NSEQ
             NSEQ = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=NSEQ).grid(column=1,row=5)
             #PER(2)
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 2 - PER(2)").grid(column=0,row=6)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Increment Between Code Numbers of Successive Elements w/ Same Sink - NADD").grid(column=0,row=6)
             global NADD
             NADD = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=NADD).grid(column=1,row=6)
             #PER(3)
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Absolute Permeability Along Principal Axis 3 - PER(3)").grid(column=0,row=7)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Increment Between Code Numbers of Successive Sinks- NADS)").grid(column=0,row=7)
             global NADS
             NADS = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=NADS).grid(column=1,row=7)
             #LTAB
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Forgenion Heat Conductivity in Liquid (W/m°C)- LTAB").grid(column=0,row=8)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="No. of Pts in Generation Table / Time. 0 or 1 = constant rate - LTAB").grid(column=0,row=8)
             global LTAB
             LTAB = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=LTAB).grid(column=1,row=8)
             #TYPE
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Gener Grain Specific Heat (J/kg°C) - TYPE").grid(column=0,row=9)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Fluid/Heat Production Options - TYPE").grid(column=0,row=9)
             global TYPE
             TYPE = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=TYPE).grid(column=1,row=9)
             #ITAB
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Pore Compressibility - ITAB").grid(column=0,row=10)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Specific Enthalpies - ITAB").grid(column=0,row=10)
             global ITAB
             ITAB = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=ITAB).grid(column=1,row=10)
             #GX
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Pore Expansivity - GX").grid(column=0,row=11)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Constant Generation Rate, - for production, + for injection - GX").grid(column=0,row=11)
             global GX
             GX = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=GX).grid(column=1,row=11)
             #EX
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Forgenion Heat Conductivity w/o Liquid (W/m°C) - EX").grid(column=0,row=12)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Fixed Specific Enthalpy of Fluid for Injection (J/kg) - EX").grid(column=0,row=12)
             global EX
             EX = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=EX).grid(column=1,row=12)
             #HG
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Tortuosity Factor - HG").grid(column=0,row=13)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Layer Thickness (m) - HG").grid(column=0,row=13)
             global HG
             HG = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=HG).grid(column=1,row=13)
             #F1
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Klinkenberg Parameter B [k*(1+b/P)] - F1").grid(column=0,row=14)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Generation Times (separate by commas) - F1 - 1 to LTAB").grid(column=0,row=14)
             global F1
             F1 = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=F1).grid(column=1,row=14)
             #F2
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Distribution Coefficient of Parent Radionuclide - F2").grid(column=0,row=15)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Generation Rates (separate by commas) - F2 - 1 to LTAB").grid(column=0,row=15)
             global F2
             F2 = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=F2).grid(column=1,row=15)
             #F3
-            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Distribution Coefficient of Daughter Radionuclide - F3").grid(column=0,row=16)
+            tk.Label(generoptionscanvas[gc],bg="#c1e2fe",text="Specific Enthalpy of Fluid (separate by commas) - F3 - 1 to LTAB").grid(column=0,row=16)
             global F3
             F3 = tk.StringVar()
             tk.Entry(generoptionscanvas[gc],textvariable=F3).grid(column=1,row=16)
